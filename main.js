@@ -150,6 +150,7 @@ const captions = [...document.querySelectorAll('#caption [data-step]')];
 const caption = i => captions.forEach((c, j) => (c.hidden = i !== j));
 
 if (typeof gsap === 'undefined' || reduced) {
+  root.classList.remove('pre-anim');
   caption(2);
   priors.forEach(p => paint(p, p.s === 'miss' ? 'ok' : p.s));
   needle.setAttribute('transform', `rotate(${priors[1].a})`);
@@ -158,6 +159,7 @@ if (typeof gsap === 'undefined' || reduced) {
 }
 
 function runCompass() {
+  root.classList.remove('pre-anim');
   gsap.ticker.add(() => {
     needle.setAttribute('transform', `rotate(${nd.r}) scale(${nd.s})`);
     ring.setAttribute('transform', `rotate(${nd.ring})`);

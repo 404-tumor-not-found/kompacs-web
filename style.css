@@ -276,3 +276,13 @@ footer.site a { color: rgba(255,255,255,.8); }
 .illus-p { margin-top: 6px; color: var(--subtle); }
 .dark .feature { margin-top: 52px; }
 @media (max-width: 960px) { .built-list { grid-template-columns: 1fr; } }
+.pre-anim #compass, .pre-anim #wordmark { visibility: hidden; }
+.hero .wrap > * { min-width: 0; }
+@media (max-width: 560px) {
+  .wordmark { font-size: clamp(44px, 15vw, 72px); }
+  .hero .lead { font-size: 17px; }
+}
+@media (max-width: 760px) {
+  .stage svg { width: 66%; display: block; margin: 0 auto; }
+}
+.mail b { overflow-wrap: anywhere; }
