@@ -87,3 +87,7 @@
   .vsticky { position: relative; height: auto; padding-top: 40px; }
   .vstep { min-height: 0; padding: 36px 0; }
 }
+@media (min-width: 961px) {
+  .story { padding: 0; }
+  .story .s0 { justify-content: flex-start; padding-top: max(110px, 14vh); }
+}
