@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lab-story.css">
 <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('pre-anim')</script>
 </head>
 <body>
@@ -42,10 +43,12 @@
 </header>
 
 <main id="top">
-
-<section class="hero" aria-label="KOMPACS">
-  <div class="wrap">
-    <div class="hero-copy">
+<section class="story">
+  <div class="dive-wrap"><div class="dive"></div></div>
+  <div class="wrap story-grid">
+    <div class="story-text">
+      <div class="step s0">
+      <div class="hero-copy">
       <span class="eyebrow">Rakathon 2026 · <span data-l="cs">finále</span><span data-l="en">finals</span></span>
       <div class="wordmark" id="wordmark" aria-label="KOMPACS">
         <span class="k">K</span><span class="k">O</span><span class="k">M</span><span>P</span><span>A</span><span class="c" id="wm-c">C</span><span>S</span>
@@ -67,8 +70,77 @@
       </div>
     </div>
 
-    <div class="stage" id="stage">
-      <svg id="compass" viewBox="-330 -330 660 660" role="img" aria-label="Kompas hledá chybějící předchozí vyšetření / A compass finds a missing prior exam">
+      </div>
+      <div class="step s1" id="problem">
+  <div class="pain-s">
+    <div class="reveal">
+      <span class="kicker"><span data-l="cs">Problém</span><span data-l="en">The problem</span></span>
+      <h2><span data-l="cs">Chybí starý snímek. Případ se odloží, sestra visí na telefonu.</span><span data-l="en">An old scan is missing. The case waits, a nurse hangs on the phone.</span></h2>
+      <ul class="steps">
+        <li><span>1</span><div data-l="cs">Před CT nebo MDT chybí v PACS snímky pro srovnání.</div><div data-l="en">Before a CT or tumor board, the comparison scans are not in PACS.</div></li>
+        <li><span>2</span><div data-l="cs">Kde vznikly, stojí jen ve větě ve zprávě.</div><div data-l="en">Where they were done is only a sentence in a report.</div></li>
+        <li><span>3</span><div data-l="cs">Lékař odkládá, sestra volá, pacient čeká.</div><div data-l="en">The physician waits, a nurse calls, the patient waits.</div></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="big-stat"><span data-count="6">6</span><small data-l="cs">z 10</small><small data-l="en">of 10</small></div>
+      <p class="sub"><span data-l="cs">případů v demo datech nemá snímek, který lékař potřebuje.</span><span data-l="en">cases in the demo data lack a scan the physician needs.</span></p>
+    </div>
+  </div>
+  <div>
+    <blockquote class="quote reveal">
+      <p data-l="cs">Radiologové milují v životě dvě věci: tmu a kompletní data pacientů. Bohužel, dnešní zdravotnictví jim většinou dopřeje jen tu tmu.</p>
+      <p data-l="en">Radiologists love two things in life: darkness and complete patient data. Sadly, today's healthcare mostly gives them only the darkness.</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
+    </blockquote>
+  </div>
+</div>
+      <div class="step s2" id="reseni">
+  
+    <span class="kicker reveal"><span data-l="cs">Řešení</span><span data-l="en">The solution</span></span>
+    <h2 class="reveal"><span data-l="cs">Kontrola se spustí sama, ve chvíli objednávky.</span><span data-l="en">The check runs by itself, the moment an exam is ordered.</span></h2>
+    <p class="fit reveal"><span data-l="cs">Přesně podle zadání FN Motol a Nemocnice Na Homolce:</span><span data-l="en">Exactly the workflow from the FN Motol and Na Homolce brief:</span>
+      <b>1 <span data-l="cs">spouštěč</span><span data-l="en">trigger</span></b> → <b>2 <span data-l="cs">co je relevantní</span><span data-l="en">what is relevant</span></b> → <b>3 <span data-l="cs">kontrola PACS</span><span data-l="en">check PACS</span></b> → <b>4 <span data-l="cs">dohledání</span><span data-l="en">resolution</span></b></p>
+
+    <div class="flow reveal">
+      <div class="sources">
+        <div class="src"><span data-l="cs">Záznam v NIS</span><span data-l="en">NIS record</span><em>198</em></div>
+        <div class="src hl"><span data-l="cs">Zmínka ve zprávě (AI)</span><span data-l="en">Mention in a report (AI)</span><em>74</em></div>
+        <div class="src hl"><span data-l="cs">Zdravotní pojišťovna</span><span data-l="en">Health insurer</span><em>14</em></div>
+        <div class="src"><span data-l="cs">Ručně</span><span data-l="en">Manual</span><em>+</em></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span data-l="cs">Hodnocení AI</span><span data-l="en">AI verdict</span></b><p data-l="cs">Relevantní, nebo ne. S důvodem a citací Modré knihy ČOS.</p><p data-l="en">Relevant or not. With a reason and a guideline citation.</p></div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span data-l="cs">Koordinátor/ka</span><span data-l="en">Coordinator</span></b><p data-l="cs">Rozhodne nejisté. Schválí žádost jedním klikem.</p><p data-l="en">Decides the uncertain ones. Approves the request in one click.</p></div>
+      <div class="arrow">→</div>
+      <div class="node ok"><b>PACS</b><p data-l="cs">Snímky dorazí. Stav se přepne na „dostupné“.</p><p data-l="en">Images arrive. The status turns “available”.</p></div>
+    </div>
+
+</div>
+      <div class="step s3">    <div class="feature">
+      <div class="copy reveal">
+        <h3><span data-l="cs">AI, která cituje zdroj</span><span data-l="en">AI that cites its source</span></h3>
+        <p data-l="cs">Ke každému snímku důvod, větu ze zprávy a ověřenou citaci Modré knihy ČOS. Když si AI není jistá, rozhoduje člověk.</p>
+        <p data-l="en">For every scan: a reason, the source sentence and a verified guideline citation. When the AI is unsure, a human decides.</p>
+      </div>
+      <div class="frame reveal"><div class="bar"><i></i><i></i><i></i></div><img src="assets/app-verdict.jpg" alt="Hodnocení AI s citací Modré knihy / AI verdict with guideline citation" width="1440" height="799" loading="lazy"></div>
+    </div>
+
+    <blockquote class="quote reveal">
+      <p data-l="cs">Pacienti často zapomínají. Pojišťovna ale nikdy nezapomene, co komu zaplatila.</p>
+      <p data-l="en">Patients often forget. The insurer never forgets what it paid for.</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
+    </blockquote>
+    <p class="note reveal">
+      <span data-l="cs"><b>Data VZP:</b> cílově od 1. 1. 2028 (konzultováno se zástupcem VZP). V prototypu simulovaná.</span>
+      <span data-l="en"><b>VZP data:</b> target 2028-01-01 (consulted with a VZP representative). Simulated in the prototype.</span>
+    </p>
+  </div>
+    </div>
+    <div class="story-stage">
+      <div class="stage" id="stage">
+      <svg id="compass" viewBox="-400 -400 800 800" role="img" aria-label="Kompas hledá chybějící předchozí vyšetření / A compass finds a missing prior exam">
         <defs>
           <radialGradient id="glow" r="0.5">
             <stop offset="0" stop-color="#7FE0C9" stop-opacity=".22"/>
@@ -95,11 +167,11 @@
         <span data-step="2" hidden><span data-l="cs">Žádost odeslána → <b>dostupné v PACS</b></span><span data-l="en">Request sent → <b>available in PACS</b></span></span>
       </p>
     </div>
+    </div>
   </div>
-  <a class="scroll-hint" href="#ukazka">↓ <span data-l="cs">dál</span><span data-l="en">scroll</span></a>
 </section>
 
-<div class="wrap showcase" id="ukazka">
+<section class="after-story"><div class="wrap showcase" id="ukazka">
   <div class="frame reveal">
     <div class="bar"><i></i><i></i><i></i></div>
     <!-- Video slot: replace the img with
@@ -108,75 +180,44 @@
   </div>
 </div>
 
-<!-- 1. Problém -->
-<section id="problem">
-  <div class="wrap pain">
-    <div class="reveal">
-      <span class="kicker"><span data-l="cs">Problém</span><span data-l="en">The problem</span></span>
-      <h2><span data-l="cs">Chybí starý snímek. Případ se odloží, sestra visí na telefonu.</span><span data-l="en">An old scan is missing. The case waits, a nurse hangs on the phone.</span></h2>
-      <ul class="steps">
-        <li><span>1</span><div data-l="cs">Před CT nebo MDT chybí v PACS snímky pro srovnání.</div><div data-l="en">Before a CT or tumor board, the comparison scans are not in PACS.</div></li>
-        <li><span>2</span><div data-l="cs">Kde vznikly, stojí jen ve větě ve zprávě.</div><div data-l="en">Where they were done is only a sentence in a report.</div></li>
-        <li><span>3</span><div data-l="cs">Lékař odkládá, sestra volá, pacient čeká.</div><div data-l="en">The physician waits, a nurse calls, the patient waits.</div></li>
-      </ul>
-    </div>
-    <div class="reveal">
-      <div class="big-stat"><span data-count="6">6</span><small data-l="cs">z 10</small><small data-l="en">of 10</small></div>
-      <p class="sub"><span data-l="cs">případů v demo datech nemá snímek, který lékař potřebuje.</span><span data-l="en">cases in the demo data lack a scan the physician needs.</span></p>
-    </div>
-  </div>
+</section>
+
+<!-- Data -->
+<section id="data" class="alt">
   <div class="wrap">
-    <blockquote class="quote reveal">
-      <p data-l="cs">Radiologové milují v životě dvě věci: tmu a kompletní data pacientů. Bohužel, dnešní zdravotnictví jim většinou dopřeje jen tu tmu.</p>
-      <p data-l="en">Radiologists love two things in life: darkness and complete patient data. Sadly, today's healthcare mostly gives them only the darkness.</p>
-      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
-    </blockquote>
+    <span class="kicker reveal"><span data-l="cs">Data ze 40 demo případů</span><span data-l="en">Data from 40 demo cases</span></span>
+    <h2 class="reveal"><span data-l="cs">Kde se ztrácí srovnání.</span><span data-l="en">Where the comparison gets lost.</span></h2>
+    <div class="grid g2">
+      <figure class="card viz reveal">
+        <figcaption><b>24 / 40</b> <span data-l="cs">případů nemá v PACS snímek, který lékař potřebuje</span><span data-l="en">cases lack a scan in PACS that the physician needs</span></figcaption>
+        <div class="waffle" role="img" aria-label="24 ze 40 případů chybí snímek / 24 of 40 cases miss a scan"></div>
+        <div class="legend">
+          <span><i class="w miss"></i><span data-l="cs">chybí snímek (24)</span><span data-l="en">scan missing (24)</span></span>
+          <span><i class="w ok"></i><span data-l="cs">vše dostupné (16)</span><span data-l="en">all available (16)</span></span>
+        </div>
+      </figure>
+      <figure class="card viz reveal">
+        <figcaption><b>286 → 127 → 34</b> <span data-l="cs">od kandidátů k chybějícím snímkům</span><span data-l="en">from candidates to missing scans</span></figcaption>
+        <div class="funnel">
+          <div class="frow"><span class="fl"><span data-l="cs">Kandidáti</span><span data-l="en">Candidates</span></span>
+            <div class="fbar"><i class="seg nis" style="--w:69.2" title="NIS: 198"></i><i class="seg rep" style="--w:25.9" title="Zprávy / reports: 74"></i><i class="seg ins" style="--w:4.9" title="Pojišťovna / insurer: 14"></i></div><b>286</b></div>
+          <div class="frow"><span class="fl"><span data-l="cs">Relevantní</span><span data-l="en">Relevant</span></span>
+            <div class="fbar"><i class="seg rel" style="--w:44.4" title="127"></i></div><b>127</b></div>
+          <div class="frow"><span class="fl"><span data-l="cs">Chybí v PACS</span><span data-l="en">Missing in PACS</span></span>
+            <div class="fbar"><i class="seg miss" style="--w:11.9" title="34"></i></div><b>34</b></div>
+        </div>
+        <div class="legend">
+          <span><i class="w nis"></i>NIS 198</span>
+          <span><i class="w rep"></i><span data-l="cs">zprávy (AI) 74</span><span data-l="en">reports (AI) 74</span></span>
+          <span><i class="w ins"></i><span data-l="cs">pojišťovna 14</span><span data-l="en">insurer 14</span></span>
+        </div>
+        <p class="viz-note" data-l="cs">Všech 34 chybějících je zmíněno jen v textu zpráv. Hledání v NIS ani PACS je nenajde.</p>
+        <p class="viz-note" data-l="en">All 34 missing scans are named only in report text. A NIS or PACS search does not find them.</p>
+      </figure>
+    </div>
   </div>
 </section>
 
-<!-- 2. Řešení -->
-<section id="reseni" class="alt">
-  <div class="wrap">
-    <span class="kicker reveal"><span data-l="cs">Řešení</span><span data-l="en">The solution</span></span>
-    <h2 class="reveal"><span data-l="cs">Kontrola se spustí sama, ve chvíli objednávky.</span><span data-l="en">The check runs by itself, the moment an exam is ordered.</span></h2>
-    <p class="fit reveal"><span data-l="cs">Přesně podle zadání FN Motol a Nemocnice Na Homolce:</span><span data-l="en">Exactly the workflow from the FN Motol and Na Homolce brief:</span>
-      <b>1 <span data-l="cs">spouštěč</span><span data-l="en">trigger</span></b> → <b>2 <span data-l="cs">co je relevantní</span><span data-l="en">what is relevant</span></b> → <b>3 <span data-l="cs">kontrola PACS</span><span data-l="en">check PACS</span></b> → <b>4 <span data-l="cs">dohledání</span><span data-l="en">resolution</span></b></p>
-
-    <div class="flow reveal">
-      <div class="sources">
-        <div class="src"><span data-l="cs">Záznam v NIS</span><span data-l="en">NIS record</span><em>198</em></div>
-        <div class="src hl"><span data-l="cs">Zmínka ve zprávě (AI)</span><span data-l="en">Mention in a report (AI)</span><em>74</em></div>
-        <div class="src hl"><span data-l="cs">Zdravotní pojišťovna</span><span data-l="en">Health insurer</span><em>14</em></div>
-        <div class="src"><span data-l="cs">Ručně</span><span data-l="en">Manual</span><em>+</em></div>
-      </div>
-      <div class="arrow">→</div>
-      <div class="node"><b><span data-l="cs">Hodnocení AI</span><span data-l="en">AI verdict</span></b><p data-l="cs">Relevantní, nebo ne. S důvodem a citací Modré knihy ČOS.</p><p data-l="en">Relevant or not. With a reason and a guideline citation.</p></div>
-      <div class="arrow">→</div>
-      <div class="node"><b><span data-l="cs">Koordinátor/ka</span><span data-l="en">Coordinator</span></b><p data-l="cs">Rozhodne nejisté. Schválí žádost jedním klikem.</p><p data-l="en">Decides the uncertain ones. Approves the request in one click.</p></div>
-      <div class="arrow">→</div>
-      <div class="node ok"><b>PACS</b><p data-l="cs">Snímky dorazí. Stav se přepne na „dostupné“.</p><p data-l="en">Images arrive. The status turns “available”.</p></div>
-    </div>
-
-    <div class="feature">
-      <div class="copy reveal">
-        <h3><span data-l="cs">AI, která cituje zdroj</span><span data-l="en">AI that cites its source</span></h3>
-        <p data-l="cs">Ke každému snímku důvod, větu ze zprávy a ověřenou citaci Modré knihy ČOS. Když si AI není jistá, rozhoduje člověk.</p>
-        <p data-l="en">For every scan: a reason, the source sentence and a verified guideline citation. When the AI is unsure, a human decides.</p>
-      </div>
-      <div class="frame reveal"><div class="bar"><i></i><i></i><i></i></div><img src="assets/app-verdict.jpg" alt="Hodnocení AI s citací Modré knihy / AI verdict with guideline citation" width="1440" height="799" loading="lazy"></div>
-    </div>
-
-    <blockquote class="quote reveal">
-      <p data-l="cs">Pacienti často zapomínají. Pojišťovna ale nikdy nezapomene, co komu zaplatila.</p>
-      <p data-l="en">Patients often forget. The insurer never forgets what it paid for.</p>
-      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
-    </blockquote>
-    <p class="note reveal">
-      <span data-l="cs"><b>Data VZP:</b> cílově od 1. 1. 2028 (konzultováno se zástupcem VZP). V prototypu simulovaná.</span>
-      <span data-l="en"><b>VZP data:</b> target 2028-01-01 (consulted with a VZP representative). Simulated in the prototype.</span>
-    </p>
-  </div>
-</section>
 
 <!-- 3. Inovace -->
 <section id="jinak">
@@ -408,7 +449,7 @@
 <script src="main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>window.LAB_DIVE = true</script>
-<script src="lab-scans.js"></script>
-<script src="lab-a.js"></script>
+<script src="lab-story.js"></script>
+<script src="lab-story-a.js"></script>
 </body>
 </html>
