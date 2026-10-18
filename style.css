@@ -98,7 +98,7 @@ h2 { font-size: clamp(30px, 3.6vw, 46px); margin-top: 12px; font-weight: 800; ma
 
 /* Adam quotes */
 .quote { position: relative; margin: 56px 0 0; padding: 34px 38px 30px 38px; border-radius: var(--radius); background: linear-gradient(135deg, var(--primary-deep), var(--primary)); color: #fff; max-width: 900px; box-shadow: 0 24px 60px -30px rgba(10,63,60,.7); }
-.quote::before { content: "\201E"; position: absolute; top: -34px; left: 26px; font-size: 120px; line-height: 1; color: var(--mint); font-weight: 800; }
+.quote::before { content: "\201C"; position: absolute; top: -22px; left: 26px; font-size: 120px; line-height: 1; color: var(--mint); font-weight: 800; }
 .quote p { font-size: clamp(20px, 2.1vw, 26px); font-weight: 700; line-height: 1.38; letter-spacing: -0.01em; }
 .quote footer { margin-top: 18px; display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: rgba(255,255,255,.8); }
 .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--mint); color: var(--night); display: grid; place-items: center; font-weight: 800; font-size: 14px; }
@@ -235,3 +235,8 @@ footer.site a { color: rgba(255,255,255,.8); }
   .g2, .g3, .g4, .stats, .team { grid-template-columns: 1fr; }
   .quote { padding: 30px 22px 24px; }
 }
+
+.mail { color: var(--text); }
+.mail b { color: var(--ink); }
+.dark .feature .copy p { color: rgba(255,255,255,.75); }
+.stat b.wide { font-size: 42px; white-space: nowrap; }
