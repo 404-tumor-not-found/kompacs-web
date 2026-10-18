@@ -42,7 +42,7 @@ document.fonts.ready.then(() => {
 
   // 2 Solution: lanes, filter, timeline.
   stepTimeline(2, tl => {
-    cards.forEach(c => tl.to(c.outer, { attr: { transform: T(LANE_X0 + c.li * LANE_DX, LANES[c.lane], 0, 0.95) }, duration: 0.35 }, 0.02 * c.li));
+    cards.forEach(c => tl.to(c.outer, { attr: { transform: T(LANE_X0 + c.li * LANE_DX, LANES[c.lane], 0, 0.95) }, duration: 0.35 }, 0.01 + 0.02 * c.li));
     irrelCards.forEach(c => tl.to(c.g, { opacity: 0, scale: 0.5, duration: 0.15 }, 0.45));
     tl.to(laneLabels, { opacity: 1, duration: 0.15 }, 0.15)
       .to(laneLabels, { opacity: 0, duration: 0.12 }, 0.55)

@@ -99,7 +99,7 @@ document.fonts.ready.then(() => {
 
   // 3 AI: the missing CT is found in a report and fills the abdomen.
   stepTimeline(3, tl => {
-    tl.to(missCard.outer, { attr: { transform: T(REG.abdomen[0], REG.abdomen[1], 0, 0.15) }, duration: 0.35, ease: 'power2.in' }, 0)
+    tl.to(missCard.outer, { attr: { transform: T(REG.abdomen[0], REG.abdomen[1], 0, 0.15) }, duration: 0.35, ease: 'power2.in' }, 0.01)
       .to(missCard.outer, { opacity: 0, duration: 0.05 }, 0.33);
     quadShards.forEach((el, i) => { if (regionOf(i) === 'abdomen') tl.to(el, { fill: '#7FE0C9', opacity: 0.9, duration: 0.1 }, 0.36); });
     tl.to(flag, { opacity: 0, duration: 0.1 }, 0.36)
