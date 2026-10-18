@@ -230,3 +230,23 @@ function nextSearch(prev) {
   gsap.to(next.dot, { opacity: 0.2, duration: 0.25, yoyo: true, repeat: 1, onRepeat: () => paint(next, 'miss') });
   gsap.delayedCall(0.7, () => search(next));
 }
+
+// Analytics: count the first time each main section comes into view (GoatCounter, cookieless).
+(() => {
+  const sections = { problem: '#problem', solution: '#reseni', data: '#data', innovation: '#jinak', security: '#bezpecnost', built: '#postaveno', physicians: '#lekari', impact: '#dopady', scale: '#skala', roadmap: 'section.dark.mz', team: '#tym', end: '.closing' };
+  const send = (name, tries = 0) => {
+    if (window.goatcounter && goatcounter.count) goatcounter.count({ path: `reached-${name}`, title: `Reached: ${name}`, event: true });
+    else if (tries < 20) setTimeout(() => send(name, tries + 1), 500);
+  };
+  const seen = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    send(e.target.dataset.gcSection);
+    seen.unobserve(e.target);
+  }), { threshold: 0.3 });
+  Object.entries(sections).forEach(([name, sel]) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.dataset.gcSection = name;
+    seen.observe(el);
+  });
+})();
