@@ -41,6 +41,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 const NS = 'http://www.w3.org/2000/svg';
 const nd = { r: 0, s: 1, ring: 0 };
 let rot = 0;
+let ringSpin;
+let holdSearch = false;
 const rose = document.getElementById('rose');
 const ring = document.getElementById('ring');
 const priorsG = document.getElementById('priors');
@@ -150,14 +152,16 @@ const captions = [...document.querySelectorAll('#caption [data-step]')];
 const caption = i => captions.forEach((c, j) => (c.hidden = i !== j));
 
 if (typeof gsap === 'undefined' || reduced) {
+  root.classList.remove('pre-anim');
   caption(2);
   priors.forEach(p => paint(p, p.s === 'miss' ? 'ok' : p.s));
   needle.setAttribute('transform', `rotate(${priors[1].a})`);
 } else {
-  runCompass();
+  document.fonts.ready.then(runCompass);
 }
 
 function runCompass() {
+  root.classList.remove('pre-anim');
   gsap.ticker.add(() => {
     needle.setAttribute('transform', `rotate(${nd.r}) scale(${nd.s})`);
     ring.setAttribute('transform', `rotate(${nd.ring})`);
@@ -176,12 +180,12 @@ function runCompass() {
       stagger: { amount: 0.9, from: 'random' },
     })
     .from('#wordmark span:not(.c)', { y: 70, opacity: 0, duration: 0.9, stagger: 0.06 }, 0.2)
-    .from('#wm-c', { width: 0, y: -120, rotation: -40, opacity: 0, duration: 1, ease: 'bounce.out' }, 1.3)
+    .from('#wm-c', { width: 0, y: -120, rotation: -40, opacity: 0, duration: 1, ease: 'bounce.out', clearProps: 'width' }, 1.3)
     .from(nd, { s: 0, r: -270, duration: 1.2, ease: 'back.out(1.6)' }, 1.4)
     .from(priors.map(p => p.g), { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)', stagger: 0.08 }, 1.9)
     .add(() => search(priors[1]), 2.6);
 
-  gsap.to(nd, { ring: 360, duration: 140, ease: 'none', repeat: -1 });
+  ringSpin = gsap.to(nd, { ring: 360, duration: 140, ease: 'none', repeat: -1 });
 
   const stage = document.getElementById('stage');
   const svg = document.getElementById('compass');
@@ -220,6 +224,7 @@ function search(target) {
 }
 
 function nextSearch(prev) {
+  if (holdSearch) { gsap.delayedCall(1, () => nextSearch(prev)); return; }
   const pool = priors.filter(p => p !== prev);
   const next = pool[Math.floor(Math.random() * pool.length)];
   gsap.to(next.dot, { opacity: 0.2, duration: 0.25, yoyo: true, repeat: 1, onRepeat: () => paint(next, 'miss') });

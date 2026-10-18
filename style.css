@@ -58,7 +58,7 @@ html[data-lang="cs"] .lang [data-set="cs"], html[data-lang="en"] .lang [data-set
 .eyebrow { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mint); }
 .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(127,224,201,.2); }
 .wordmark { margin: 22px 0 4px; font-size: clamp(56px, 8vw, 104px); font-weight: 800; letter-spacing: .01em; line-height: .95; color: #fff; display: flex; }
-.wordmark span { display: inline-block; }
+.wordmark span { display: inline-block; flex-shrink: 0; }
 .wordmark .k { color: var(--mint); }
 .wordmark .c { overflow: hidden; color: var(--coral); }
 .expand { font-size: 17px; color: rgba(255,255,255,.75); font-weight: 500; }
@@ -276,3 +276,14 @@ footer.site a { color: rgba(255,255,255,.8); }
 .illus-p { margin-top: 6px; color: var(--subtle); }
 .dark .feature { margin-top: 52px; }
 @media (max-width: 960px) { .built-list { grid-template-columns: 1fr; } }
+.pre-anim #compass, .pre-anim #wordmark { visibility: hidden; }
+.hero .wrap > * { min-width: 0; }
+@media (max-width: 560px) {
+  .wordmark { font-size: clamp(44px, 15vw, 72px); }
+  .hero .lead { font-size: 17px; }
+}
+@media (max-width: 760px) {
+  .stage svg { width: 66%; display: block; margin: 0 auto; }
+}
+.mail b { overflow-wrap: anywhere; }
+
