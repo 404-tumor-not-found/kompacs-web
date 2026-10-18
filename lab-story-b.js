@@ -84,7 +84,7 @@ document.fonts.ready.then(() => {
   stepTimeline(2, tl => {
     cards.forEach((c, i) => tl.to(c.outer, { attr: { transform: T(c.x, c.y, c.r, 1.1) }, opacity: 1, duration: 0.25, ease: 'power3.out' }, i * 0.015));
     irrelCards.forEach(c => tl.to(c.outer, { opacity: 0, attr: { transform: T(c.x, c.y, 0, 0.4) }, duration: 0.12 }, 0.5));
-    relCards.filter(c => !c.miss).forEach((c, i) => {
+    relCards.filter(c => c !== missCard).forEach((c, i) => {
       const [rx, ry] = REG[c.region];
       tl.to(c.outer, { attr: { transform: T(rx, ry, 0, 0.15) }, duration: 0.3, ease: 'power2.in' }, 0.5 + i * 0.03)
         .to(c.outer, { opacity: 0, duration: 0.05 }, 0.75 + i * 0.03);

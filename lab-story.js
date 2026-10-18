@@ -30,14 +30,14 @@ if (waffle) {
 const cardData = [
   { m: 'CT', d: '4/2025', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
   { m: 'MR', d: '7/2025', src: 'FN Motol', lane: 'nis', rel: true, region: 'pelvis' },
-  { m: 'PET/CT', d: '9/2025', src: 'Homolka', lane: 'rep', rel: true, region: 'chest' },
-  { m: 'CT', d: '12/2025', src: 'Thomayer', lane: 'rep', rel: true, miss: true, region: 'abdomen' },
+  { m: 'PET/CT', d: '9/2025', src: 'Homolka', lane: 'rep', rel: true, miss: true, region: 'chest' },
+  { m: 'CT', d: '12/2025', src: 'Thomayer', lane: 'rep', rel: true, miss: true, primary: true, region: 'abdomen' },
   { m: 'CT', d: '2/2026', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
+  { m: 'MR', d: '3/2026', src: 'Bulovka', lane: 'rep', rel: true, miss: true, region: 'pelvis' },
   { m: 'RTG', d: '5/2026', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
-  { m: 'CT', d: '8/2026', src: 'VZP', lane: 'ins', rel: true, region: 'pelvis' },
+  { m: 'CT', d: '8/2026', src: 'VZP', lane: 'ins', rel: true, miss: true, region: 'pelvis' },
   { m: 'USG', d: '2019', src: 'zpráva', lane: 'rep' },
   { m: 'RTG', d: '2017', src: 'NIS', lane: 'nis' },
-  { m: 'MR', d: '2015', src: 'zpráva', lane: 'rep' },
   { m: 'CT', d: '2014', src: 'NIS', lane: 'nis' },
   { m: 'USG', d: '2016', src: 'VZP', lane: 'ins' },
 ];
@@ -65,7 +65,8 @@ const cards = cardData.map((c, i) => {
 });
 const relCards = cards.filter(c => c.rel);
 const irrelCards = cards.filter(c => !c.rel);
-const missCard = cards.find(c => c.miss);
+const missCard = cards.find(c => c.primary);
+const missCards = cards.filter(c => c.miss);
 const setCardDrift = on => cards.forEach(c => (on ? c.drift.play() : c.drift.pause()));
 
 function showCards(tl, at) {

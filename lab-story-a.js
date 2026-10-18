@@ -1,7 +1,7 @@
 // Story A: compass shatters into scattered scans, scans sort into source lanes, merge into one timeline, missing scan found.
 const LANES = { nis: -190, rep: -20, ins: 150 };
 const LANE_X0 = -255, LANE_DX = 112;
-const TL_Y = -110, tlX = i => -340 + i * 104, PLAN_X = 375;
+const TL_Y = -110, tlX = i => -350 + i * 92, PLAN_X = 375;
 
 const laneLabels = Object.entries({ nis: ['NIS', 'NIS'], rep: ['Zprávy (AI)', 'Reports (AI)'], ins: ['Pojišťovna', 'Insurer'] }).map(([k, [cs, en]]) => {
   const t = svgEl('text', { x: -395, y: LANES[k] + 5, 'font-size': 14, 'font-weight': 800, fill: '#7FE0C9', opacity: 0, 'font-family': FONT, 'letter-spacing': '0.04em' }, cardsG);
@@ -59,10 +59,12 @@ document.fonts.ready.then(() => {
 
   // 3 AI: the missing scan is found, verdict card opens.
   stepTimeline(3, tl => {
-    tl.to(missCard.rect, { attr: { 'stroke-opacity': 0 }, duration: 0.1 }, 0)
-      .to(missCard.found, { opacity: 1, duration: 0.1 }, 0)
-      .to(missCard.t1, { fill: '#7FE0C9', duration: 0.1 }, 0)
-      .fromTo(ping, { attr: { r: 11 }, opacity: 0.9 }, { attr: { r: 70 }, opacity: 0, duration: 0.3, ease: 'power1.out' }, 0)
+    missCards.forEach((c, k) => {
+      tl.to(c.rect, { attr: { 'stroke-opacity': 0 }, duration: 0.1 }, 0.01 + k * 0.05)
+        .to(c.found, { opacity: 1, duration: 0.1 }, 0.01 + k * 0.05)
+        .to(c.t1, { fill: '#7FE0C9', duration: 0.1 }, 0.01 + k * 0.05);
+    });
+    tl.fromTo(ping, { attr: { r: 11 }, opacity: 0.9 }, { attr: { r: 70 }, opacity: 0, duration: 0.3, ease: 'power1.out', immediateRender: false }, 0.01)
       .to(connector, { opacity: 1, duration: 0.1 }, 0.25)
       .to(verdict, { opacity: 1, attr: { transform: verdict.getAttribute('transform').replace('scale(0.9)', 'scale(1)') }, duration: 0.3, ease: 'back.out(1.6)' }, 0.3);
   });
