@@ -287,3 +287,6 @@ footer.site a { color: rgba(255,255,255,.8); }
 }
 .mail b { overflow-wrap: anywhere; }
 
+.eyebrow.winner { text-decoration: none; padding: 7px 14px; border-radius: 999px; background: rgba(242,201,76,.14); border: 1px solid rgba(242,201,76,.45); color: #F2C94C; transition: background .2s; }
+.eyebrow.winner::before { display: none; }
+.eyebrow.winner:hover { background: rgba(242,201,76,.24); }
