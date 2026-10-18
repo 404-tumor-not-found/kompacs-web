@@ -154,7 +154,7 @@ if (typeof gsap === 'undefined' || reduced) {
   priors.forEach(p => paint(p, p.s === 'miss' ? 'ok' : p.s));
   needle.setAttribute('transform', `rotate(${priors[1].a})`);
 } else {
-  runCompass();
+  document.fonts.ready.then(runCompass);
 }
 
 function runCompass() {
@@ -176,7 +176,7 @@ function runCompass() {
       stagger: { amount: 0.9, from: 'random' },
     })
     .from('#wordmark span:not(.c)', { y: 70, opacity: 0, duration: 0.9, stagger: 0.06 }, 0.2)
-    .from('#wm-c', { width: 0, y: -120, rotation: -40, opacity: 0, duration: 1, ease: 'bounce.out' }, 1.3)
+    .from('#wm-c', { width: 0, y: -120, rotation: -40, opacity: 0, duration: 1, ease: 'bounce.out', clearProps: 'width' }, 1.3)
     .from(nd, { s: 0, r: -270, duration: 1.2, ease: 'back.out(1.6)' }, 1.4)
     .from(priors.map(p => p.g), { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)', stagger: 0.08 }, 1.9)
     .add(() => search(priors[1]), 2.6);
