@@ -268,3 +268,11 @@ footer.site a { color: rgba(255,255,255,.8); }
   .compare .them::before { content: "✕ "; color: var(--missing); font-weight: 800; }
   .compare .us::before { content: "✓ "; color: var(--primary); font-weight: 800; }
 }
+.built-list { grid-template-columns: repeat(3, 1fr); gap: 16px 28px; margin-top: 40px; }
+.built-list li { font-size: 16.5px; font-weight: 600; color: var(--ink); }
+.footnote { margin-top: 26px; font-size: 14px; color: var(--subtle); }
+.mail .hint { color: var(--subtle); font-size: 13.5px; }
+.illus-t { margin-top: 14px; font-size: 20px; }
+.illus-p { margin-top: 6px; color: var(--subtle); }
+.dark .feature { margin-top: 52px; }
+@media (max-width: 960px) { .built-list { grid-template-columns: 1fr; } }
