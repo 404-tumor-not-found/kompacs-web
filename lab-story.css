@@ -73,3 +73,17 @@
 .story:has(.story-on) #caption { opacity: 0; }
 @keyframes pulse { 50% { stroke-opacity: .25; } }
 .pulse { animation: pulse 1.4s ease-in-out infinite; }
+
+/* Block 2 (B_2) */
+.vblock { background: var(--card); padding: 20px 0; }
+.vgrid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; }
+.vstage, .vtext { min-width: 0; }
+.vsticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; }
+.vsticky svg { width: 100%; max-height: 88vh; }
+.vstep { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 0; }
+.vstep .ticks li { font-size: 16.5px; }
+@media (max-width: 960px) {
+  .vgrid { grid-template-columns: 1fr; gap: 0; }
+  .vsticky { position: relative; height: auto; padding-top: 40px; }
+  .vstep { min-height: 0; padding: 36px 0; }
+}
