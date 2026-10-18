@@ -71,3 +71,5 @@
 #needle, #beam, #priors, #caption { transition: opacity .4s; }
 .story-on #needle, .story-on #beam, .story-on #priors { opacity: 0 !important; }
 .story:has(.story-on) #caption { opacity: 0; }
+@keyframes pulse { 50% { stroke-opacity: .25; } }
+.pulse { animation: pulse 1.4s ease-in-out infinite; }
