@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="cs" data-lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOMPACS · KOMparátor PACS</title>
+<meta name="description" content="KOMPACS najde před CT, MR, PET nebo MDT relevantní předchozí vyšetření, ověří je v PACS a připraví žádost o to, co chybí. Rakathon 2026.">
+<meta property="og:title" content="KOMPACS · Žádné vyšetření bez srovnání.">
+<meta property="og:description" content="Před CT, MR, PET nebo MDT najde relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí.">
+<meta property="og:image" content="https://kompacs.cz/assets/og.png">
+<meta property="og:url" content="https://kompacs.cz/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#072B29">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="KOMPACS">
+      <img src="assets/favicon.svg" alt="">
+      <span><b>KOMPACS</b><small><span class="kom">KOM</span>parátor PACS</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#problem"><span data-l="cs">Problém</span><span data-l="en">Problem</span></a>
+      <a href="#reseni"><span data-l="cs">Řešení</span><span data-l="en">Solution</span></a>
+      <a href="#bezpecnost"><span data-l="cs">Bezpečnost</span><span data-l="en">Security</span></a>
+      <a href="#dopady"><span data-l="cs">Dopady</span><span data-l="en">Impact</span></a>
+      <a href="#tym"><span data-l="cs">Tým</span><span data-l="en">Team</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Jazyk / Language">
+      <button type="button" data-set="cs">CZ</button>
+      <button type="button" data-set="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-label="KOMPACS">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Rakathon 2026 · <span data-l="cs">finále</span><span data-l="en">finals</span></span>
+      <div class="wordmark" id="wordmark" aria-label="KOMPACS">
+        <span class="k">K</span><span class="k">O</span><span class="k">M</span><span>P</span><span>A</span><span class="c" id="wm-c">C</span><span>S</span>
+      </div>
+      <p class="expand"><span class="kom">KOM</span>parátor PACS</p>
+      <h1><span data-l="cs">Žádné vyšetření bez srovnání.</span><span data-l="en">No exam without a comparison.</span></h1>
+      <p class="lead">
+        <span data-l="cs">Před CT, MR, PET nebo MDT najde relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí.</span>
+        <span data-l="en">Before a CT, MRI, PET or tumor board, KOMPACS finds the relevant prior exams, checks them in PACS and requests what is missing.</span>
+      </p>
+      <div class="chips">
+        <span class="chip ok"><i></i><span data-l="cs">dostupné</span><span data-l="en">available</span></span>
+        <span class="chip miss"><i></i><span data-l="cs">chybí</span><span data-l="en">missing</span></span>
+        <span class="chip dec"><i></i><span data-l="cs">k rozhodnutí</span><span data-l="en">to decide</span></span>
+      </div>
+      <div class="ctas">
+        <a class="btn primary" href="#reseni"><span data-l="cs">Jak to funguje</span><span data-l="en">How it works</span> →</a>
+        <a class="btn ghost" href="https://github.com/404-tumor-not-found/rakathon" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <svg id="compass" viewBox="-330 -330 660 660" role="img" aria-label="Kompas hledá chybějící předchozí vyšetření / A compass finds a missing prior exam">
+        <defs>
+          <radialGradient id="glow" r="0.5">
+            <stop offset="0" stop-color="#7FE0C9" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#7FE0C9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle r="300" fill="url(#glow)"/>
+        <g id="ring"></g>
+        <g id="rose"></g>
+        <line id="beam" x1="0" y1="0" x2="0" y2="-270" stroke="#7FE0C9" stroke-width="2" stroke-linecap="round" opacity="0"/>
+        <g id="priors"></g>
+        <g id="needle">
+          <polygon points="0,-205 0,0 -15,0" fill="#FFFFFF"/>
+          <polygon points="0,-205 15,0 0,0" fill="#CFE9E4"/>
+          <polygon points="0,90 -15,0 0,0" fill="#0E4B47"/>
+          <polygon points="0,90 0,0 15,0" fill="#08332F"/>
+          <circle r="17" fill="#FFFFFF"/>
+          <circle r="7" fill="#0F6B66"/>
+        </g>
+      </svg>
+      <p class="caption" id="caption" aria-live="polite">
+        <span data-step="0"><span data-l="cs">Hledám předchozí vyšetření…</span><span data-l="en">Searching prior exams…</span></span>
+        <span data-step="1" hidden><span class="miss">● </span><span data-l="cs">Nalezeno ve zprávě, <b class="miss">chybí v PACS</b></span><span data-l="en">Found in a report, <b class="miss">missing in PACS</b></span></span>
+        <span data-step="2" hidden><span data-l="cs">Žádost odeslána → <b>dostupné v PACS</b></span><span data-l="en">Request sent → <b>available in PACS</b></span></span>
+      </p>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#ukazka">↓ <span data-l="cs">dál</span><span data-l="en">scroll</span></a>
+</section>
+
+<div class="wrap showcase" id="ukazka">
+  <div class="frame reveal">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <!-- Video slot: replace the img with
+    <video src="assets/demo.mp4" poster="assets/app-case.jpg" autoplay muted loop playsinline></video> -->
+    <img src="assets/app-case.jpg" alt="KOMPACS: detail případu s úkoly koordinátora / KOMPACS case detail" width="1440" height="799">
+  </div>
+</div>
+
+<!-- 1. Problém -->
+<section id="problem">
+  <div class="wrap pain">
+    <div class="reveal">
+      <span class="kicker"><span data-l="cs">Problém</span><span data-l="en">The problem</span></span>
+      <h2><span data-l="cs">Chybí starý snímek. Případ se odloží, sestra visí na telefonu.</span><span data-l="en">An old scan is missing. The case waits, a nurse hangs on the phone.</span></h2>
+      <ul class="steps">
+        <li><span>1</span><div data-l="cs">Pacient přijde na CT nebo na MDT. Starší snímky pro srovnání nejsou v PACS.</div><div data-l="en">The patient arrives for a CT or a tumor board. The older scans for comparison are not in PACS.</div></li>
+        <li><span>2</span><div data-l="cs">Kde vznikly, je často jen ve větě v lékařské zprávě. Hledání v NIS ani v PACS je nenajde.</div><div data-l="en">Where they were done is often only a sentence in a report. A NIS or PACS search does not find them.</div></li>
+        <li><span>3</span><div data-l="cs">Lékař případ odloží. Sestra obvolává nemocnice. Pacient čeká, nebo jde na vyšetření znovu.</div><div data-l="en">The physician postpones the case. A nurse calls other hospitals. The patient waits, or gets scanned again.</div></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="big-stat"><span data-count="6">6</span><small data-l="cs">z 10</small><small data-l="en">of 10</small></div>
+      <p class="sub"><span data-l="cs">případů v našich demo datech nemá předchozí vyšetření, které lékař potřebuje. <b>Všech 34</b> chybějících je zmíněno jen v textu zpráv.</span><span data-l="en">cases in our demo data lack a prior exam the physician needs. <b>All 34</b> missing priors are named only in report text.</span></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <blockquote class="quote reveal">
+      <p data-l="cs">Radiologové milují v životě dvě věci: tmu a kompletní data pacientů. Bohužel, náš systém jim většinou dopřeje jen tu tmu.</p>
+      <p data-l="en">Radiologists love two things in life: darkness and complete patient data. Sadly, our system mostly gives them only the darkness.</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- 2. Řešení / AI -->
+<section id="reseni" class="alt">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Co jsme za víkend postavili</span><span data-l="en">What we built this weekend</span></span>
+    <h2 class="reveal"><span data-l="cs">Kontrola předchozích vyšetření spustí se sama, ve chvíli objednávky.</span><span data-l="en">The prior-exam check runs by itself, the moment an exam is ordered.</span></h2>
+    <p class="sub reveal"><span data-l="cs">Funkční koordinátorský dashboard, AI model pro analýzu textu zpráv a interaktivní časová osa pacienta. Systém průběžně porovnává žádanky s historií a hledá, co chybí před CT plic nebo před onkologickým MDT.</span><span data-l="en">A working coordinator dashboard, an AI model that reads report text, and an interactive patient timeline. The system continuously compares orders with the history and finds what is missing before a lung CT or an oncology tumor board.</span></p>
+
+    <div class="flow reveal">
+      <div class="sources">
+        <div class="src"><span data-l="cs">Záznam v NIS</span><span data-l="en">NIS record</span><em>198</em></div>
+        <div class="src hl"><span data-l="cs">Zmínka ve zprávě (AI)</span><span data-l="en">Mention in a report (AI)</span><em>74</em></div>
+        <div class="src hl"><span data-l="cs">Zdravotní pojišťovna</span><span data-l="en">Health insurer</span><em>14</em></div>
+        <div class="src"><span data-l="cs">Ručně</span><span data-l="en">Manual</span><em>+</em></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span data-l="cs">Hodnocení AI</span><span data-l="en">AI verdict</span></b><p data-l="cs">Relevantní / nerelevantní / nejisté. S důvodem, větou ze zprávy a citací Modré knihy ČOS.</p><p data-l="en">Relevant / not relevant / uncertain. With a reason, the source sentence and a Modrá kniha (Czech oncology guideline) citation.</p></div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span data-l="cs">Koordinátor/ka</span><span data-l="en">Coordinator</span></b><p data-l="cs">Rozhodne nejisté, schválí žádost jedním klikem.</p><p data-l="en">Decides the uncertain ones, approves the request in one click.</p></div>
+      <div class="arrow">→</div>
+      <div class="node ok"><b><span data-l="cs">PACS</span><span data-l="en">PACS</span></b><p data-l="cs">Snímky dorazí, stav se sám přepne na „dostupné“.</p><p data-l="en">Images arrive, the status turns “available” by itself.</p></div>
+    </div>
+
+    <div class="feature">
+      <div class="copy reveal">
+        <h3><span data-l="cs">AI, která cituje zdroj</span><span data-l="en">AI that cites its source</span></h3>
+        <p data-l="cs">Model posoudí všechna kandidátní vyšetření případu najednou. Každé hodnocení má důvod, větu ze zprávy a citaci z Modré knihy ČOS se stránkou. Citaci systém ověřuje. Když si model není jistý, rozhoduje člověk.</p>
+        <p data-l="en">The model judges all candidate priors of a case at once. Each verdict has a reason, the source sentence and a page-linked Modrá kniha citation. The system verifies the citation. When the model is unsure, a human decides.</p>
+        <ul class="ticks">
+          <li data-l="cs">Data pacientů jdou jen do modelu v EU Data Zone</li><li data-l="en">Patient data goes only to an EU Data Zone model</li>
+          <li data-l="cs">Historie hodnocení, jde vrátit a posoudit znovu</li><li data-l="en">Verdict history, re-judge or roll back</li>
+        </ul>
+      </div>
+      <div class="frame reveal"><div class="bar"><i></i><i></i><i></i></div><img src="assets/app-verdict.jpg" alt="Hodnocení AI s citací Modré knihy / AI verdict with guideline citation" width="1440" height="799" loading="lazy"></div>
+    </div>
+
+    <blockquote class="quote reveal">
+      <p data-l="cs">Pacienti často zapomínají. Pojišťovna ale nikdy nezapomene, co komu zaplatila.</p>
+      <p data-l="en">Patients often forget. The insurer never forgets what it paid for.</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
+    </blockquote>
+    <p class="note reveal">
+      <span data-l="cs"><b>Data pojišťovny:</b> z vykázané péče zjistíme, že pacient měl CT břicha před půl rokem jinde, i když si to sám nepamatuje. V prototypu je pojišťovna simulovaný FHIR server. Napojení na data VZP: cílově od 1. 1. 2028 (konzultováno se zástupcem VZP).</span>
+      <span data-l="en"><b>Insurer data:</b> billing history shows the patient had an abdominal CT elsewhere six months ago, even if they do not remember. In the prototype the insurer is a simulated FHIR server. Connection to VZP data: target 2028-01-01 (consulted with a VZP representative).</span>
+    </p>
+  </div>
+</section>
+
+<!-- 3. Bezpečnost a integrace -->
+<section id="bezpecnost" class="dark">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Využitelnost, integrace a bezpečnost</span><span data-l="en">Usability, integration and security</span></span>
+    <h2 class="reveal"><span data-l="cs">Žádní AI roboti na telefonu. Přesný e-mail na jedno kliknutí.</span><span data-l="en">No AI robots on the phone. A precise e-mail in one click.</span></h2>
+
+    <div class="feature">
+      <div class="copy reveal">
+        <p data-l="cs">Systém vybere kanál sám: e-mail, telefon, nebo FHIR, když má nemocnice FHIR adresu. Kontakt navrhne z adresáře ePACS. Koordinátor/ka ho ověří a uloží. Nic neodejde bez člověka.</p>
+        <p data-l="en">The system picks the channel: e-mail, phone, or FHIR when the hospital has a FHIR endpoint. It suggests the contact from the ePACS directory. The coordinator verifies and saves it. Nothing leaves without a human.</p>
+      </div>
+      <div class="mail reveal" aria-label="Ukázka návrhu e-mailu / Sample e-mail draft">
+        <div class="row"><span data-l="cs">Komu</span><span data-l="en">To</span><b>radiologie@thomayer.example</b></div>
+        <div class="row"><span data-l="cs">Věc</span><span data-l="en">Subject</span><b data-l="cs">Žádost o zaslání snímků: CT hrudníku a břicha 12/2025</b><b data-l="en">Request for images: chest and abdomen CT 12/2025</b></div>
+        <div class="body">
+          <p data-l="cs">Dobrý den, pro plánované CT dne 23. 10. žádáme o zaslání snímků a popisu CT hrudníku a břicha z 12/2025 přes ePACS. Pacient: <span class="blur">PAC-DEMO-001</span>. Děkujeme.</p>
+          <p data-l="en">Hello, for a CT planned on 23 Oct we kindly ask for the images and report of the chest and abdomen CT from 12/2025 via ePACS. Patient: <span class="blur">PAC-DEMO-001</span>. Thank you.</p>
+        </div>
+        <div class="act"><span class="send"><span data-l="cs">Odeslat</span><span data-l="en">Send</span></span><span style="color:var(--subtle);font-size:13.5px" data-l="cs">návrh od AI · schvaluje koordinátor/ka</span><span style="color:var(--subtle);font-size:13.5px" data-l="en">AI draft · approved by the coordinator</span></div>
+      </div>
+    </div>
+
+    <blockquote class="quote reveal">
+      <p data-l="cs">Představa, že se naše AI dovolá vrátnému a odrecituje mu rodné číslo a onkologickou diagnózu, je sice úsměvná, ale váš GDPR pověřenec by z toho měl infarkt.</p>
+      <p data-l="en">Picture our AI reaching the hospital porter and reciting a birth number and a cancer diagnosis. Funny, yes. But your data protection officer would have a heart attack.</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span data-l="cs">medik, KOMPACS</span><span data-l="en">medical student, KOMPACS</span></footer>
+    </blockquote>
+
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>InterSystems IRIS for Health</h3>
+        <p data-l="cs">Objednávky přicházejí jako HL7 v2, IRIS je převede na FHIR R4. PACS feed, vektorové hledání ve zprávách a v Modré knize, vše v IRIS.</p>
+        <p data-l="en">Orders arrive as HL7 v2, IRIS converts them to FHIR R4. PACS feed, vector search over reports and the guideline, all inside IRIS.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3><span data-l="cs">Data zůstávají v EU</span><span data-l="en">Data stays in the EU</span></h3>
+        <p data-l="cs">Text zpráv jde jen do modelu v EU Data Zone. Vyhledávání podle významu běží na lokálním modelu. Každé hodnocení AI je dohledatelné.</p>
+        <p data-l="en">Report text goes only to an EU Data Zone model. Semantic search runs on a local model. Every AI verdict is traceable.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 11 15.8 7M8.2 13l7.6 4"/></svg></div>
+        <h3><span data-l="cs">Připraveno na FHIR a MCP</span><span data-l="en">Ready for FHIR and MCP</span></h3>
+        <p data-l="cs">Souhrn případu je FHIR dokument s historií verzí. MCP server: libovolný AI agent se zeptá „které snímky chybí a proč“.</p>
+        <p data-l="en">The case summary is a versioned FHIR document. An MCP server lets any AI agent ask “which priors are missing and why”.</p>
+      </div>
+    </div>
+    <div class="badges reveal">
+      <span class="badge">HL7 v2 <em>ORM^O01</em></span><span class="badge">FHIR <em>R4</em></span><span class="badge">IRIS <em>Vector Search</em></span><span class="badge">FHIR SQL Builder</span><span class="badge">MCP</span><span class="badge">EU Data Zone</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Pro lékaře a škálovatelnost -->
+<section id="lekari">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Pro lékaře</span><span data-l="en">For physicians</span></span>
+    <h2 class="reveal"><span data-l="cs">Celá historie pacienta na jedné ose. Červená vlajka, když chybí kritický snímek.</span><span data-l="en">The whole patient history on one timeline. A red flag when a critical scan is missing.</span></h2>
+
+    <div class="grid g2">
+      <div class="illus reveal">
+        <svg viewBox="0 0 520 200" width="100%" role="img" aria-label="Časová osa / Timeline">
+          <g font-family="Plus Jakarta Sans, sans-serif" font-size="12" fill="#5C6E74">
+            <text x="0" y="56" font-weight="700" fill="#14232A"><tspan data-l="cs">Zobrazování</tspan><tspan data-l="en">Imaging</tspan></text>
+            <text x="0" y="116" font-weight="700" fill="#14232A"><tspan data-l="cs">Zprávy</tspan><tspan data-l="en">Reports</tspan></text>
+            <text x="0" y="170" font-weight="700" fill="#14232A"><tspan data-l="cs">Léčba</tspan><tspan data-l="en">Treatment</tspan></text>
+            <text x="120" y="20">11/2025</text><text x="230" y="20">1/2026</text><text x="340" y="20">4/2026</text><text x="450" y="20">10/2026</text>
+          </g>
+          <line x1="110" y1="52" x2="515" y2="52" stroke="#EEF2F3" stroke-width="22"/>
+          <circle cx="140" cy="52" r="10" fill="#0F6B66" stroke="#fff" stroke-width="3"/>
+          <circle cx="215" cy="52" r="10" fill="none" stroke="#C9372C" stroke-width="2.5" stroke-dasharray="4 3"/>
+          <circle cx="300" cy="52" r="10" fill="#4B33B5" stroke="#fff" stroke-width="3"/>
+          <circle cx="380" cy="52" r="10" fill="#0F6B66" stroke="#fff" stroke-width="3"/>
+          <path d="M478 40 l10 12 -10 12 -10 -12z" fill="#0F6B66"/>
+          <line x1="478" y1="30" x2="478" y2="185" stroke="#0F6B66" stroke-dasharray="4 4"/>
+          <rect x="135" y="104" width="12" height="12" rx="3" fill="#2B5BB8"/><rect x="245" y="104" width="12" height="12" rx="3" fill="#2B5BB8"/><rect x="372" y="104" width="12" height="12" rx="3" fill="#2B5BB8"/>
+          <circle cx="170" cy="164" r="7" fill="#B4441C"/><circle cx="330" cy="164" r="7" fill="#B4441C"/>
+          <text x="215" y="82" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="700" fill="#C9372C"><tspan data-l="cs">CT · chybí</tspan><tspan data-l="en">CT · missing</tspan></text>
+        </svg>
+        <h3 style="margin-top:14px;font-size:20px"><span data-l="cs">Interaktivní časová osa</span><span data-l="en">Interactive timeline</span></h3>
+        <p style="margin-top:8px;color:var(--subtle)" data-l="cs">Zobrazování, zprávy, léčba, laboratoř. Hledání podle významu: „metastázy v plicích“ najde i věty jinými slovy.</p>
+        <p style="margin-top:8px;color:var(--subtle)" data-l="en">Imaging, reports, treatment, labs. Semantic search: “lung metastases” also finds sentences in other words.</p>
+      </div>
+      <div class="illus reveal">
+        <svg viewBox="0 0 520 200" width="100%" role="img" aria-label="Anatomická mapa / Anatomical map">
+          <g transform="translate(150 0)">
+            <circle cx="60" cy="24" r="18" fill="#E6ECEE"/>
+            <rect x="52" y="40" width="16" height="10" fill="#E6ECEE"/>
+            <path d="M22 54 h76 l14 80 -12 2 -10 -60 v120 h-56 v-120 l-10 60 -12 -2z" fill="#E6ECEE"/>
+            <rect x="32" y="56" width="56" height="44" rx="8" fill="#DDF2EC" stroke="#0F6B66" stroke-width="2"/>
+            <rect x="32" y="104" width="56" height="34" rx="8" fill="#FCE3DA" stroke="#C9372C" stroke-width="2" stroke-dasharray="5 3"/>
+            <rect x="32" y="142" width="56" height="30" rx="8" fill="#DDF2EC" stroke="#0F6B66" stroke-width="2"/>
+          </g>
+          <g font-family="Plus Jakarta Sans, sans-serif" font-size="12.5">
+            <text x="300" y="78" font-weight="700" fill="#14232A"><tspan data-l="cs">Hrudník</tspan><tspan data-l="en">Chest</tspan></text><text x="300" y="94" fill="#155B4F"><tspan data-l="cs">CT 2/2026 · dostupné</tspan><tspan data-l="en">CT 2/2026 · available</tspan></text>
+            <text x="300" y="122" font-weight="700" fill="#14232A"><tspan data-l="cs">Břicho</tspan><tspan data-l="en">Abdomen</tspan></text><text x="300" y="138" fill="#C9372C"><tspan data-l="cs">CT 12/2025 · chybí</tspan><tspan data-l="en">CT 12/2025 · missing</tspan></text>
+            <text x="300" y="162" font-weight="700" fill="#14232A"><tspan data-l="cs">Pánev</tspan><tspan data-l="en">Pelvis</tspan></text><text x="300" y="178" fill="#155B4F"><tspan data-l="cs">MR 7/2025 · dostupné</tspan><tspan data-l="en">MRI 7/2025 · available</tspan></text>
+          </g>
+        </svg>
+        <h3 style="margin-top:14px;font-size:20px"><span data-l="cs">2D anatomická mapa</span><span data-l="en">2D anatomical map</span></h3>
+        <p style="margin-top:8px;color:var(--subtle)" data-l="cs">Na siluetě pacienta se rozsvítí jen oblasti, kde už prokazatelně proběhlo obrazové vyšetření. Chybí-li kritický snímek, svítí červeně.</p>
+        <p style="margin-top:8px;color:var(--subtle)" data-l="en">The patient silhouette lights up only where imaging is proven to exist. A missing critical scan shows in red.</p>
+      </div>
+    </div>
+
+    <div class="feature rev">
+      <div class="copy reveal">
+        <h3><span data-l="cs">Fronta, žádosti, urgence</span><span data-l="en">Queue, requests, follow-ups</span></h3>
+        <p data-l="cs">Kalendář plánovaných vyšetření a MDT. U každého případu: co rozhodnout, co chybí, co čeká. Upozornění na duplicitu, když se stejné vyšetření opakuje do 6 týdnů.</p>
+        <p data-l="en">A calendar of planned exams and tumor boards. Per case: what to decide, what is missing, what is pending. A duplicate alert when the same exam repeats within 6 weeks.</p>
+        <ul class="ticks">
+          <li data-l="cs">Stav žádosti: návrh → odesláno → doručeno</li><li data-l="en">Request status: draft → sent → delivered</li>
+          <li data-l="cs">Nedoručeno po 2 pracovních dnech → urgovat</li><li data-l="en">Not delivered after 2 working days → follow up</li>
+        </ul>
+      </div>
+      <div class="frame reveal"><div class="bar"><i></i><i></i><i></i></div><img src="assets/app-request.jpg" alt="Žádost o chybějící snímky přes FHIR / Request for missing images via FHIR" width="1440" height="799" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Škálovatelnost -->
+<section id="skala" class="alt">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Škálovatelnost</span><span data-l="en">Scalability</span></span>
+    <h2 class="reveal"><span data-l="cs">Není vázaný na jednu nemocnici.</span><span data-l="en">Not tied to one hospital.</span></h2>
+    <p class="sub reveal"><span data-l="cs">Díky datům pojišťovny a standardu FHIR jde KOMPACS nasadit v jakémkoliv zařízení v republice. Nemocnice nic nemění, připojí co má: HL7 objednávky, FHIR, PACS feed.</span><span data-l="en">With insurer data and the FHIR standard, KOMPACS can run in any facility in the country. The hospital changes nothing. It connects what it has: HL7 orders, FHIR, a PACS feed.</span></p>
+    <div class="grid g3">
+      <div class="card reveal"><h3><span data-l="cs">Jeden balík na nemocnici</span><span data-l="en">One stack per hospital</span></h3><p data-l="cs">On-prem nebo EU cloud. Distribuci a podporu zajistí český IT integrátor.</p><p data-l="en">On-prem or EU cloud. A Czech IT integrator distributes and supports it.</p></div>
+      <div class="card reveal"><h3><span data-l="cs">Centrálně bez dat pacientů</span><span data-l="en">Central, no patient data</span></h3><p data-l="cs">Adresář ověřených kontaktů a dotaz na pojišťovnu. Data pacientů zůstávají v nemocnici.</p><p data-l="en">The verified-contact directory and the insurer lookup. Patient data stays in the hospital.</p></div>
+      <div class="card reveal"><h3><span data-l="cs">Funguje už dnes</span><span data-l="en">Works today</span></h3><p data-l="cs">Sdílení snímků přes evropský EHDS má platit až od roku 2031. KOMPACS zlepší současný stav hned.</p><p data-l="en">Image exchange under the European EHDS is due only in 2031. KOMPACS improves today's state now.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Dopady -->
+<section id="dopady">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Dopady</span><span data-l="en">Impact</span></span>
+    <h2 class="reveal"><span data-l="cs">Méně duplicitních vyšetření. Kratší čekání. Méně záření.</span><span data-l="en">Fewer duplicate exams. Shorter waits. Less radiation.</span></h2>
+    <p class="sub reveal"><span data-l="cs">Šetříme peníze nemocnicím i pojišťovně. Zkracujeme čekání na diagnózu. A chráníme onkologické pacienty před zbytečným zářením.</span><span data-l="en">We save money for hospitals and the insurer. We shorten the wait for a diagnosis. And we protect cancer patients from needless radiation.</span></p>
+    <div class="stats">
+      <div class="stat red reveal"><b><span data-count="34">34</span></b><p data-l="cs">chybějících relevantních vyšetření nalezeno ve 40 demo případech</p><p data-l="en">missing relevant priors found in 40 demo cases</p></div>
+      <div class="stat reveal"><b><span data-count="60">60</span> %</b><p data-l="cs">případů by lékař začal bez potřebného srovnání</p><p data-l="en">of cases would start without a needed comparison</p></div>
+      <div class="stat reveal"><b>10 h → 2 h</b><p data-l="cs">kontrola 40 případů: 15 min → 3 min na případ</p><p data-l="en">checking 40 cases: 15 min → 3 min per case</p><span class="est"><span data-l="cs">odhad</span><span data-l="en">estimate</span></span></div>
+      <div class="stat reveal"><b>~<span data-count="68">68</span></b><p data-l="cs">telefonátů nahradí připravená žádost</p><p data-l="en">phone calls replaced by a ready request</p><span class="est"><span data-l="cs">odhad</span><span data-l="en">estimate</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Motivace -->
+<section class="dark">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Co dál</span><span data-l="en">What next</span></span>
+    <h2 class="reveal"><span data-l="cs">Tohle pro nás není jen víkendový hackathon.</span><span data-l="en">For us, this is not just a weekend hackathon.</span></h2>
+    <p class="sub reveal"><span data-l="cs">Jsme motivovaní dotáhnout KOMPACS do reálného nasazení.</span><span data-l="en">We are motivated to take KOMPACS into real use.</span></p>
+    <div class="roadmap reveal">
+      <div><b><span data-l="cs">Pilot FN Motol</span><span data-l="en">Pilot at FN Motol</span></b><p data-l="cs">Skutečné objednávky, klinické potvrzení pravidel AI.</p><p data-l="en">Real orders, clinical sign-off of the AI rules.</p></div>
+      <div><b><span data-l="cs">Nemocnice Na Homolce</span><span data-l="en">Na Homolce Hospital</span></b><p data-l="cs">Druhé pracoviště, napojení na ePACS.</p><p data-l="en">Second site, connection to ePACS.</p></div>
+      <div><b><span data-l="cs">Data VZP</span><span data-l="en">VZP data</span></b><p data-l="cs">Cílově od 1. 1. 2028. Vyšetření, o kterých žádná jedna nemocnice neví.</p><p data-l="en">Target 2028-01-01. Exams no single hospital knows about.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Tým -->
+<section id="tym">
+  <div class="wrap">
+    <span class="kicker reveal"><span data-l="cs">Tým 404 Tumor Not Found</span><span data-l="en">Team 404 Tumor Not Found</span></span>
+    <h2 class="reveal"><span data-l="cs">Ozvěte se nám.</span><span data-l="en">Get in touch.</span></h2>
+    <div class="team">
+      <div class="member reveal"><span class="avatar">VB</span><h3>Vojtěch Bešťák</h3><p class="role">ML / data, frontend</p><a href="mailto:vojtech.bestak@cvut.cz">vojtech.bestak@cvut.cz</a></div>
+      <div class="member medic reveal"><span class="avatar">AK</span><h3>Adam Karas</h3><p class="role"><span data-l="cs">medik, product owner</span><span data-l="en">medical student, product owner</span></p></div>
+      <div class="member reveal"><span class="avatar">PK</span><h3>Pavel Kos</h3><p class="role">product</p><a href="mailto:pavelkos@live.com">pavelkos@live.com</a></div>
+      <div class="member reveal"><span class="avatar">VN</span><h3>Vojtěch Novotný</h3><p class="role">backend</p><a href="mailto:vojtechn@icloud.com">vojtechn@icloud.com</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark closing">
+  <div class="wrap">
+    <h2 class="reveal"><span class="kom">KOM</span>PACS. <span data-l="cs">Kompaktní data, abyste vy mohli v klidu léčit.</span><span data-l="en">Compact data, so you can treat in peace.</span></h2>
+    <div class="ctas reveal">
+      <a class="btn primary" href="mailto:vojtech.bestak@cvut.cz?subject=KOMPACS"><span data-l="cs">Napište nám</span><span data-l="en">Write to us</span></a>
+      <a class="btn ghost" href="https://github.com/404-tumor-not-found/rakathon" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Rakathon 2026 · FN Motol · Nemocnice Na Homolce · InterSystems IRIS for Health</span>
+    <span><span data-l="cs">Prototyp, není zdravotnický prostředek.</span><span data-l="en">Prototype, not a medical device.</span></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
