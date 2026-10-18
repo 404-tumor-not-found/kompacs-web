@@ -41,6 +41,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 const NS = 'http://www.w3.org/2000/svg';
 const nd = { r: 0, s: 1, ring: 0 };
 let rot = 0;
+let ringSpin;
+let holdSearch = false;
 const rose = document.getElementById('rose');
 const ring = document.getElementById('ring');
 const priorsG = document.getElementById('priors');
@@ -183,7 +185,7 @@ function runCompass() {
     .from(priors.map(p => p.g), { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)', stagger: 0.08 }, 1.9)
     .add(() => search(priors[1]), 2.6);
 
-  gsap.to(nd, { ring: 360, duration: 140, ease: 'none', repeat: -1 });
+  ringSpin = gsap.to(nd, { ring: 360, duration: 140, ease: 'none', repeat: -1 });
 
   const stage = document.getElementById('stage');
   const svg = document.getElementById('compass');
@@ -222,6 +224,7 @@ function search(target) {
 }
 
 function nextSearch(prev) {
+  if (holdSearch) { gsap.delayedCall(1, () => nextSearch(prev)); return; }
   const pool = priors.filter(p => p !== prev);
   const next = pool[Math.floor(Math.random() * pool.length)];
   gsap.to(next.dot, { opacity: 0.2, duration: 0.25, yoyo: true, repeat: 1, onRepeat: () => paint(next, 'miss') });

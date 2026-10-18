@@ -286,3 +286,11 @@ footer.site a { color: rgba(255,255,255,.8); }
   .stage svg { width: 66%; display: block; margin: 0 auto; }
 }
 .mail b { overflow-wrap: anywhere; }
+
+/* lab variants */
+.fx { position: absolute; inset: 0; pointer-events: none; }
+.fx svg { width: 100%; height: 100%; display: block; }
+.fx-back { z-index: 0; }
+.fx-top { z-index: 3; }
+@keyframes pulse { 50% { stroke-opacity: .25; } }
+.pulse { animation: pulse 1.4s ease-in-out infinite; }
