@@ -33,6 +33,7 @@ const nd = { r: 0, s: 1, ring: 0 };
 let rot = 0;
 let ringSpin;
 let holdSearch = false;
+let introDone = Promise.resolve();
 const rose = document.getElementById('rose');
 const ring = document.getElementById('ring');
 const priorsG = document.getElementById('priors');
@@ -169,6 +170,10 @@ function runCompass() {
     .from(nd, { s: 0, r: -270, duration: 1.2, ease: 'back.out(1.6)' }, 1.4)
     .from(priors.map(p => p.g), { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)', stagger: 0.08 }, 1.9)
     .add(() => search(priors[1]), 2.6);
+
+  // The scroll story records shard positions when it starts. It must start from a whole compass.
+  introDone = new Promise(done => intro.eventCallback('onComplete', done));
+  addEventListener('scroll', () => intro.progress(1), { once: true, passive: true });
 
   ringSpin = gsap.to(nd, { ring: 360, duration: 140, ease: 'none', repeat: -1 });
 
