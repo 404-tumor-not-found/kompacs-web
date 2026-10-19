@@ -1,15 +1,5 @@
 const root = document.documentElement;
-
-function setLang(lang) {
-  root.dataset.lang = lang;
-  root.lang = lang === 'en' ? 'en' : 'cs';
-  try { localStorage.setItem('lang', lang); } catch {}
-}
-const urlLang = new URLSearchParams(location.search).get('lang');
-let savedLang = null;
-try { savedLang = localStorage.getItem('lang'); } catch {}
-setLang(urlLang || savedLang || 'cs');
-document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.set)));
+const tr = key => I18N[key];
 
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
@@ -85,12 +75,12 @@ shards.push(poly(rose, [0, 60, 120, 180, 240, 300].map(a => pt(a, 26)), '#0A3F3C
 
 const ORBIT = 292;
 const priors = [
-  { a: 22, cs: 'CT 2/2026', en: 'CT 2/2026', s: 'ok' },
-  { a: 78, cs: 'CT hrudníku 12/2025', en: 'Chest CT 12/2025', s: 'miss' },
-  { a: 141, cs: 'MR 7/2025', en: 'MRI 7/2025', s: 'ok' },
-  { a: 200, cs: 'PET/CT 2024', en: 'PET/CT 2024', s: 'dec' },
-  { a: 262, cs: 'RTG 5/2026', en: 'X-ray 5/2026', s: 'ok' },
-  { a: 318, cs: 'CT břicha 4/2025', en: 'Abdomen CT 4/2025', s: 'ok' },
+  { a: 22, text: 'CT 2/2026', s: 'ok' },
+  { a: 78, text: tr('compass.chest_ct'), s: 'miss' },
+  { a: 141, text: tr('compass.mri'), s: 'ok' },
+  { a: 200, text: 'PET/CT 2024', s: 'dec' },
+  { a: 262, text: tr('compass.xray'), s: 'ok' },
+  { a: 318, text: tr('compass.abdomen_ct'), s: 'ok' },
 ];
 const STYLE = {
   ok: { fill: '#7FE0C9', stroke: '#7FE0C9', dash: '0' },
@@ -127,12 +117,7 @@ priors.forEach(p => {
   label.setAttribute('font-weight', 600);
   label.setAttribute('font-family', 'Plus Jakarta Sans, sans-serif');
   label.setAttribute('fill', 'rgba(255,255,255,.78)');
-  ['cs', 'en'].forEach(l => {
-    const t = document.createElementNS(NS, 'tspan');
-    t.dataset.l = l;
-    t.textContent = p[l];
-    label.appendChild(t);
-  });
+  label.textContent = p.text;
   g.append(halo, dot, check, label);
   priorsG.appendChild(g);
   Object.assign(p, { g, halo, dot, check, label });

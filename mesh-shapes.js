@@ -8,10 +8,9 @@ const MS = (() => {
     if (parent) parent.appendChild(e);
     return e;
   };
-  const bi = (cs, en) => `<tspan data-l="cs">${cs}</tspan><tspan data-l="en">${en}</tspan>`;
-  const T = (g, x, y, cs, en, a = {}) => {
+  const T = (g, x, y, text, a = {}) => {
     const t = el('text', { x, y, 'font-family': FONT, 'font-weight': 800, ...a, 'font-size': Math.max(19, (a['font-size'] || 22) * 1.15) }, g);
-    t.innerHTML = en == null ? cs : bi(cs, en);
+    t.textContent = text;
     return t;
   };
   const R = (x, y, w, h) => [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
@@ -42,12 +41,12 @@ const MS = (() => {
     return {
       polys,
       deco: g => {
-        [['ZOBRAZOVÁNÍ', 'IMAGING', -120], ['ZPRÁVY', 'REPORTS', 40], ['LÉČBA', 'TREATMENT', 140]].forEach(([cs, en, y]) => T(g, -370, y, cs, en, { fill: pal.sub, 'font-size': 16, 'letter-spacing': '0.08em' }));
-        ex.forEach(([d, x]) => T(g, x, Y - 40, d, null, { 'text-anchor': 'middle', fill: pal.sub, 'font-size': 16, 'font-weight': 700 }));
-        T(g, 310, Y - 44, 'plán', 'planned', { 'text-anchor': 'middle', fill: pal.ink, 'font-size': 17 });
+        [['mesh.imaging', -120], ['mesh.reports', 40], ['mesh.treatment', 140]].forEach(([k, y]) => T(g, -370, y, tr(k), { fill: pal.sub, 'font-size': 16, 'letter-spacing': '0.08em' }));
+        ex.forEach(([d, x]) => T(g, x, Y - 40, d, { 'text-anchor': 'middle', fill: pal.sub, 'font-size': 16, 'font-weight': 700 }));
+        T(g, 310, Y - 44, tr('common.planned'), { 'text-anchor': 'middle', fill: pal.ink, 'font-size': 17 });
         el('circle', { cx: -205, cy: Y, r: 34, fill: 'none', stroke: pal.miss, 'stroke-width': 3, 'stroke-dasharray': '6 5', class: 'pulse' }, g);
-        T(g, -205, 128, 'CT · chybí v PACS', 'CT · missing in PACS', { 'text-anchor': 'middle', fill: pal.miss, 'font-size': 18 });
-        T(g, -190, 250, '„CT v Thomayerově nemocnici 12/2025“', '“CT at Thomayer Hospital 12/2025”', { fill: pal.ink, 'font-size': 19, 'font-weight': 600, 'font-style': 'italic', 'text-anchor': 'middle' });
+        T(g, -205, 128, tr('mesh.ct_missing'), { 'text-anchor': 'middle', fill: pal.miss, 'font-size': 18 });
+        T(g, -190, 250, tr('mesh.report_quote'), { fill: pal.ink, 'font-size': 19, 'font-weight': 600, 'font-style': 'italic', 'text-anchor': 'middle' });
         el('path', { d: `M-205 ${Y + 36} V 222`, stroke: pal.miss, 'stroke-width': 2, 'stroke-dasharray': '4 5', fill: 'none' }, g);
       },
     };
@@ -95,16 +94,16 @@ const MS = (() => {
       polys,
       deco: g => {
         el('rect', { x: dx - 80, y: -66, width: 160, height: 82, rx: 10, fill: 'none', stroke: pal.miss, 'stroke-width': 3, 'stroke-dasharray': '8 6', class: 'pulse' }, g);
-        [[-126, 'Hrudník · CT 2/2026 ✓', 'Chest · CT 2/2026 ✓', pal.hi], [-24, 'Břicho · CT 12/2025 chybí', 'Abdomen · CT 12/2025 missing', pal.miss], [46, 'Pánev · MR 7/2025 ✓', 'Pelvis · MRI 7/2025 ✓', pal.hi]].forEach(([y, cs, en, f]) => {
+        [[-126, 'mesh.chest', pal.hi], [-24, 'mesh.abdomen', pal.miss], [46, 'mesh.pelvis', pal.hi]].forEach(([y, k, f]) => {
           el('line', { x1: dx + 80, y1: y - 6, x2: dx + 150, y2: y - 6, stroke: pal.line, 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, g);
-          T(g, dx + 160, y, cs, en, { fill: f, 'font-size': 19 });
+          T(g, dx + 160, y, tr(k), { fill: f, 'font-size': 19 });
         });
       },
     };
   }
 
   // Tile map of Czechia with hospital cities (illustration).
-  const CITY = [['Praha · FN Motol, Homolka', 3.5, 2.3], ['Plzeň', 1.5, 2.8], ['Brno', 6.6, 3.9], ['Olomouc', 7.8, 2.6], ['Ostrava', 9.0, 1.6], ['Č. Budějovice', 3.9, 4.6], ['Hradec Králové', 5.4, 1.6]];
+  const CITY = [[tr('mesh.prague'), 3.5, 2.3], ['Plzeň', 1.5, 2.8], ['Brno', 6.6, 3.9], ['Olomouc', 7.8, 2.6], ['Ostrava', 9.0, 1.6], ['Č. Budějovice', 3.9, 4.6], ['Hradec Králové', 5.4, 1.6]];
   function czmap(pal) {
     const mask = ['..XXX.....', '.XXXXXX.XX', 'XXXXXXXXXX', '.XXXXXXXX.', '..XXXXXX..', '...XX..XX.'];
     const S = 62, x0 = -310, y0 = -190;
@@ -117,11 +116,11 @@ const MS = (() => {
       deco: g => {
         CITY.forEach(([n, c, r], i) => {
           const [x, y] = at(c, r);
-          T(g, x, y + (i === 0 || i === 6 ? -30 : 40), n, null, { 'text-anchor': 'middle', fill: '#FFFFFF', 'font-size': i === 0 ? 19 : 16, stroke: '#072B29', 'stroke-width': 5, 'paint-order': 'stroke' });
+          T(g, x, y + (i === 0 || i === 6 ? -30 : 40), n, { 'text-anchor': 'middle', fill: '#FFFFFF', 'font-size': i === 0 ? 19 : 16, stroke: '#072B29', 'stroke-width': 5, 'paint-order': 'stroke' });
         });
-        T(g, -310, -240, 'Jeden balík na nemocnici', 'One stack per hospital', { fill: pal.ink, 'font-size': 26 });
-        T(g, -310, 250, 'on-prem nebo EU cloud · český IT integrátor', 'on-prem or EU cloud · a Czech IT integrator', { fill: pal.sub, 'font-size': 18, 'font-weight': 700 });
-        T(g, -310, 280, 'ilustrace možného rozšíření', 'illustration of a possible rollout', { fill: pal.sub, 'font-size': 15, 'font-weight': 600 });
+        T(g, -310, -240, tr('mesh.one_stack'), { fill: pal.ink, 'font-size': 26 });
+        T(g, -310, 250, tr('mesh.on_prem'), { fill: pal.sub, 'font-size': 18, 'font-weight': 700 });
+        T(g, -310, 280, tr('mesh.rollout_note'), { fill: pal.sub, 'font-size': 15, 'font-weight': 600 });
       },
     };
   }
@@ -133,10 +132,10 @@ const MS = (() => {
     return {
       polys,
       deco: g => {
-        T(g, -320, -184, 'Dnes · 10 h na 40 případů', 'Today · 10 h for 40 cases', { fill: pal.ink, 'font-size': 21 });
-        T(g, -320, -54, 'S KOMPACS · 2 h', 'With KOMPACS · 2 h', { fill: pal.a, 'font-size': 21 });
-        T(g, -180, -2, 'odhad · 1 dílek = 1 hodina · ~68 telefonátů méně', 'estimate · 1 block = 1 hour · ~68 fewer calls', { fill: pal.sub, 'font-size': 16, 'font-weight': 700 });
-        T(g, -320, 96, '34 chybějících snímků nalezeno', '34 missing scans found', { fill: pal.ink, 'font-size': 21 });
+        T(g, -320, -184, tr('mesh.hours_today'), { fill: pal.ink, 'font-size': 21 });
+        T(g, -320, -54, tr('mesh.hours_with'), { fill: pal.a, 'font-size': 21 });
+        T(g, -180, -2, tr('mesh.hours_note'), { fill: pal.sub, 'font-size': 16, 'font-weight': 700 });
+        T(g, -320, 96, tr('mesh.scans_found'), { fill: pal.ink, 'font-size': 21 });
       },
     };
   }
@@ -157,10 +156,10 @@ const MS = (() => {
     return {
       polys,
       deco: g => {
-        [['Pilot FN Motol', 'Pilot at FN Motol', 'skutečné objednávky', 'real orders'], ['Nemocnice Na Homolce', 'Na Homolce Hospital', 'napojení na ePACS', 'ePACS connection'], ['Data VZP', 'VZP data', 'cílově 1. 1. 2028', 'target 2028-01-01'], ['EHDS', 'EHDS', 'sdílení snímků 2031', 'image exchange 2031']].forEach(([cs, en, s1, s2], i) => {
+        [['mesh.roadmap_motol', 'mesh.roadmap_motol_sub'], ['mesh.roadmap_homolka', 'mesh.roadmap_homolka_sub'], ['mesh.roadmap_vzp', 'mesh.roadmap_vzp_sub'], ['mesh.roadmap_ehds', 'mesh.roadmap_ehds_sub']].forEach(([k, sub], i) => {
           const [x, y] = M[i];
-          T(g, x, y + 62, cs, en, { 'text-anchor': 'middle', fill: i === 3 ? pal.sub : pal.ink, 'font-size': 19 });
-          T(g, x, y + 86, s1, s2, { 'text-anchor': 'middle', fill: pal.sub, 'font-size': 15, 'font-weight': 700 });
+          T(g, x, y + 62, tr(k), { 'text-anchor': 'middle', fill: i === 3 ? pal.sub : pal.ink, 'font-size': 19 });
+          T(g, x, y + 86, tr(sub), { 'text-anchor': 'middle', fill: pal.sub, 'font-size': 15, 'font-weight': 700 });
         });
       },
     };

@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="{{page.lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>{{page.legacy_redirect}}</script>
+<title>{{meta.title}}</title>
+<meta name="description" content="{{meta.description}}">
+<link rel="canonical" href="{{page.url}}">
+{{page.alternates}}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KOMPACS">
+<meta property="og:locale" content="{{meta.og_locale}}">
+{{page.og_alternates}}
+<meta property="og:title" content="{{meta.og_title}}">
+<meta property="og:description" content="{{meta.og_description}}">
+<meta property="og:image" content="https://kompacs.cz/assets/og.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="{{meta.og_title}}">
+<meta property="og:url" content="{{page.url}}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://kompacs.cz/#website",
+      "url": "https://kompacs.cz/",
+      "name": "KOMPACS",
+      "alternateName": "KOMparátor PACS",
+      "inLanguage": {{page.in_language}},
+      "publisher": { "@id": "https://kompacs.cz/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kompacs.cz/#org",
+      "name": "KOMPACS",
+      "alternateName": "KOMparátor PACS",
+      "url": "https://kompacs.cz/",
+      "logo": "https://kompacs.cz/assets/favicon.svg",
+      "email": "info@kompacs.cz",
+      "award": "{{meta.award}}"
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#072B29">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/story.css">
+<link rel="stylesheet" href="/mesh.css">
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('pre-anim')</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="KOMPACS">
+      <img src="/assets/favicon.svg" alt="">
+      <span><b>KOMPACS</b><small><span class="kom">KOM</span>parátor PACS</small></span>
+    </a>
+    <nav class="nav-links">
+      <a data-goatcounter-click="click-nav-problem" href="#problem"><span>{{nav.problem}}</span></a>
+      <a data-goatcounter-click="click-nav-reseni" href="#reseni"><span>{{nav.solution}}</span></a>
+      <a data-goatcounter-click="click-nav-jinak" href="#jinak"><span>{{nav.innovation}}</span></a>
+      <a data-goatcounter-click="click-nav-bezpecnost" href="#bezpecnost"><span>{{nav.security}}</span></a>
+      <a data-goatcounter-click="click-nav-dopady" href="#dopady"><span>{{nav.impact}}</span></a>
+    </nav>
+    <a class="nav-cta" data-goatcounter-click="click-contact-nav" href="#tym"><span>{{nav.contact}}</span></a>
+    <div class="lang" role="group" aria-label="{{meta.lang_label}}">
+      {{page.lang_switch}}
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="story">
+  <div class="dive-wrap"><div class="dive"></div></div>
+  <div class="wrap story-grid">
+    <div class="story-text">
+      <div class="step s0">
+      <div class="hero-copy">
+      <a data-goatcounter-click="click-badge-rakathon" class="eyebrow winner" href="https://www.rakathon.cz/" target="_blank" rel="noopener"><span aria-hidden="true">🥇</span> <span>{{hero.1st_place_rakathon_2026}}</span> <span aria-hidden="true">→</span></a>
+      <div class="wordmark" id="wordmark" aria-label="KOMPACS">
+        <span class="k">K</span><span class="k">O</span><span class="k">M</span><span>P</span><span>A</span><span class="c" id="wm-c">C</span><span>S</span>
+      </div>
+      <p class="expand"><span class="kom">KOM</span>parátor PACS</p>
+      <h1><span>{{hero.no_exam_without_a}}</span></h1>
+      <p class="lead">
+        <span>{{hero.before_a_ct_mri}}</span>
+      </p>
+      <div class="chips">
+        <span class="chip ok"><i></i><span>{{hero.available}}</span></span>
+        <span class="chip miss"><i></i><span>{{hero.missing}}</span></span>
+        <span class="chip dec"><i></i><span>{{hero.to_decide}}</span></span>
+      </div>
+      <div class="ctas">
+        <a data-goatcounter-click="click-how-it-works" class="btn primary" href="#reseni"><span>{{hero.how_it_works}}</span> →</a>
+        <a data-goatcounter-click="click-write-to-us-hero" class="btn ghost" href="#tym"><span>{{hero.write_to_us}}</span></a>
+      </div>
+    </div>
+
+      </div>
+      <div class="step s1" id="problem">
+  <div class="pain-s">
+    <div class="reveal">
+      <span class="kicker"><span>{{problem.the_problem}}</span></span>
+      <h2><span>{{problem.an_old_scan_is}}</span></h2>
+      <ul class="steps">
+        <li><span>1</span><div>{{problem.before_a_ct_or}}</div></li>
+        <li><span>2</span><div>{{problem.where_they_were_done}}</div></li>
+        <li><span>3</span><div>{{problem.the_physician_waits_a}}</div></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="big-stat"><span data-count="6">6</span><small>{{problem.of_10}}</small></div>
+      <p class="sub"><span>{{problem.cases_in_the_demo}}</span></p>
+    </div>
+  </div>
+  <div>
+    <blockquote class="quote reveal">
+      <p>{{problem.radiologists_love_two_things}}</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span>{{problem.medical_student_kompacs}}</span></footer>
+    </blockquote>
+  </div>
+</div>
+      <div class="step s2" id="reseni">
+  
+    <span class="kicker reveal"><span>{{solution.the_solution}}</span></span>
+    <h2 class="reveal"><span>{{solution.the_check_runs_by}}</span></h2>
+    <p class="fit reveal"><span>{{solution.exactly_the_workflow_from}}</span>
+      <b>1 <span>{{solution.trigger}}</span></b> → <b>2 <span>{{solution.what_is_relevant}}</span></b> → <b>3 <span>{{solution.check_pacs}}</span></b> → <b>4 <span>{{solution.resolution}}</span></b></p>
+
+    <div class="flow reveal">
+      <div class="sources">
+        <div class="src"><span>{{solution.nis_record}}</span><em>198</em></div>
+        <div class="src hl"><span>{{solution.mention_in_a_report}}</span><em>74</em></div>
+        <div class="src hl"><span>{{solution.health_insurer}}</span><em>14</em></div>
+        <div class="src"><span>{{solution.manual}}</span><em>+</em></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span>{{solution.ai_verdict}}</span></b><p>{{solution.relevant_or_not_with}}</p></div>
+      <div class="arrow">→</div>
+      <div class="node"><b><span>{{solution.coordinator}}</span></b><p>{{solution.decides_the_uncertain_ones}}</p></div>
+      <div class="arrow">→</div>
+      <div class="node ok"><b>PACS</b><p>{{solution.images_arrive_the_status}}</p></div>
+    </div>
+
+</div>
+      <div class="step s3">    <div class="feature">
+      <div class="copy reveal">
+        <h3><span>{{ai.ai_that_cites_its}}</span></h3>
+        <p>{{ai.for_every_scan_a}}</p>
+      </div>
+      <div class="frame reveal"><div class="bar"><i></i><i></i><i></i></div><img src="/assets/app-verdict.jpg" alt="{{ai.alt_verdict}}" width="1440" height="799" loading="lazy"></div>
+    </div>
+
+    <blockquote class="quote reveal">
+      <p>{{ai.patients_often_forget_the}}</p>
+      <footer><span class="avatar">AK</span>Adam Karas · <span>{{problem.medical_student_kompacs}}</span></footer>
+    </blockquote>
+    <p class="note reveal">
+      <span>{{ai.vzp_data_target_2028}}</span>
+    </p>
+  </div>
+    </div>
+    <div class="story-stage">
+      <div class="stage" id="stage">
+      <svg id="compass" viewBox="-400 -400 800 800" role="img" aria-label="{{compass.aria}}">
+        <defs>
+          <radialGradient id="glow" r="0.5">
+            <stop offset="0" stop-color="#7FE0C9" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#7FE0C9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle r="300" fill="url(#glow)"/>
+        <g id="ring"></g>
+        <g id="rose"></g>
+        <line id="beam" x1="0" y1="0" x2="0" y2="-270" stroke="#7FE0C9" stroke-width="2" stroke-linecap="round" opacity="0"/>
+        <g id="priors"></g>
+        <g id="needle">
+          <polygon points="0,-205 0,0 -15,0" fill="#FFFFFF"/>
+          <polygon points="0,-205 15,0 0,0" fill="#CFE9E4"/>
+          <polygon points="0,90 -15,0 0,0" fill="#0E4B47"/>
+          <polygon points="0,90 0,0 15,0" fill="#08332F"/>
+          <circle r="17" fill="#FFFFFF"/>
+          <circle r="7" fill="#0F6B66"/>
+        </g>
+      </svg>
+      <p class="caption" id="caption" aria-live="polite">
+        <span data-step="0"><span>{{compass.searching_prior_exams}}</span></span>
+        <span data-step="1" hidden><span class="miss">● </span><span>{{compass.found_in_a_report}}</span></span>
+        <span data-step="2" hidden><span>{{compass.request_sent_available_in}}</span></span>
+      </p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="after-story"><div class="wrap showcase" id="ukazka">
+  <div class="frame reveal">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <!-- Video slot: replace the img with
+    <video src="/assets/demo.mp4" poster="/assets/app-case.jpg" autoplay muted loop playsinline></video> -->
+    <img src="/assets/app-case.jpg" alt="{{showcase.alt_case}}" width="1440" height="799">
+  </div>
+</div>
+
+</section>
+
+<!-- Data -->
+<section id="data" class="alt">
+  <div class="wrap">
+    <span class="kicker reveal"><span>{{data.data_from_40_demo}}</span></span>
+    <h2 class="reveal"><span>{{data.where_the_comparison_gets}}</span></h2>
+    <div class="grid g2">
+      <figure class="card viz reveal">
+        <figcaption><b>24 / 40</b> <span>{{data.cases_lack_a_scan}}</span></figcaption>
+        <div class="waffle" role="img" aria-label="{{data.waffle_aria}}"></div>
+        <div class="legend">
+          <span><i class="w miss"></i><span>{{data.scan_missing_24}}</span></span>
+          <span><i class="w ok"></i><span>{{data.all_available_16}}</span></span>
+        </div>
+      </figure>
+      <figure class="card viz reveal">
+        <figcaption><b>286 → 127 → 34</b> <span>{{data.from_candidates_to_missing}}</span></figcaption>
+        <div class="funnel">
+          <div class="frow"><span class="fl"><span>{{data.candidates}}</span></span>
+            <div class="fbar"><i class="seg nis" style="--w:69.2" title="NIS: 198"></i><i class="seg rep" style="--w:25.9" title="{{data.title_reports}}"></i><i class="seg ins" style="--w:4.9" title="{{data.title_insurer}}"></i></div><b>286</b></div>
+          <div class="frow"><span class="fl"><span>{{data.relevant}}</span></span>
+            <div class="fbar"><i class="seg rel" style="--w:44.4" title="127"></i></div><b>127</b></div>
+          <div class="frow"><span class="fl"><span>{{data.missing_in_pacs}}</span></span>
+            <div class="fbar"><i class="seg miss" style="--w:11.9" title="34"></i></div><b>34</b></div>
+        </div>
+        <div class="legend">
+          <span><i class="w nis"></i>NIS 198</span>
+          <span><i class="w rep"></i><span>{{data.reports_ai_74}}</span></span>
+          <span><i class="w ins"></i><span>{{data.insurer_14}}</span></span>
+        </div>
+        <p class="viz-note">{{data.all_34_missing_scans}}</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- 3. Inovace -->
+<section id="jinak">
+  <div class="wrap">
+    <span class="kicker reveal"><span>{{innovation.a_non_obvious_approach}}</span></span>
+    <h2 class="reveal"><span>{{innovation.the_obvious_solution_would}}</span></h2>
+    <div class="compare reveal">
+      <div class="ch"></div>
+      <div class="ch"><span>{{innovation.obvious_approach}}</span></div>
+      <div class="ch us">KOMPACS</div>
+
+      <div class="rh"><span>{{innovation.where_to_search}}</span></div>
+      <div class="them"><span>{{innovation.query_nis_and_pacs}}</span></div>
+      <div class="us"><span>{{innovation.ai_reads_report_text}}</span></div>
+
+      <div class="rh"><span>{{innovation.what_the_patient_forgot}}</span></div>
+      <div class="them"><span>{{innovation.ask_the_patient_they}}</span></div>
+      <div class="us"><span>{{innovation.ask_the_insurer_it}}</span></div>
+
+      <div class="rh"><span>{{innovation.how_to_request_scans}}</span></div>
+      <div class="them"><span>{{innovation.an_ai_voice_bot}}</span></div>
+      <div class="us"><span>{{innovation.a_precise_e_mail}}</span></div>
+
+      <div class="rh"><span>{{innovation.why_a_scan_is}}</span></div>
+      <div class="them"><span>{{innovation.a_black_box_ai}}</span></div>
+      <div class="us"><span>{{innovation.a_reason_the_source}}</span></div>
+
+      <div class="rh"><span>{{innovation.deployment}}</span></div>
+      <div class="them"><span>{{innovation.a_new_system_the}}</span></div>
+      <div class="us"><span>{{innovation.connects_what_the_hospital}}</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Bezpečnost a integrace -->
+<section id="bezpecnost" class="dark">
+  <div class="wrap">
+    <span class="kicker reveal"><span>{{security.security_and_integration}}</span></span>
+    <h2 class="reveal"><span>{{security.no_ai_robots_on}}</span></h2>
+
+    <div class="feature">
+      <blockquote class="quote reveal" style="margin:0">
+        <p>{{security.picture_our_ai_reaching}}</p>
+        <footer><span class="avatar">AK</span>Adam Karas · <span>{{problem.medical_student_kompacs}}</span></footer>
+      </blockquote>
+      <div class="mail reveal" aria-label="{{security.mail_aria}}">
+        <div class="row"><span>{{security.to}}</span><b>radiologie@thomayer.example</b></div>
+        <div class="row"><span>{{security.subject}}</span><b>{{security.image_request_chest_and}}</b></div>
+        <div class="body">
+          <p>{{security.hello_for_a_ct}}</p>
+        </div>
+        <div class="act"><span class="send"><span>{{security.send}}</span></span><span class="hint">{{security.ai_draft_approved_by}}</span></div>
+      </div>
+    </div>
+
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>InterSystems IRIS for Health</h3>
+        <p>{{security.hl7_v2_in_fhir}}</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3><span>{{security.data_stays_in_the}}</span></h3>
+        <p>{{security.report_text_goes_only}}</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <h3><span>{{security.a_human_decides}}</span></h3>
+        <p>{{security.ai_suggests_nothing_leaves}}</p>
+      </div>
+    </div>
+    <div class="badges reveal">
+      <span class="badge">HL7 v2 <em>ORM^O01</em></span><span class="badge">FHIR <em>R4</em></span><span class="badge">IRIS <em>Vector Search</em></span><span class="badge">FHIR SQL Builder</span><span class="badge">MCP</span><span class="badge">EU Data Zone</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Co běží -->
+<section id="postaveno" class="alt">
+  <div class="wrap">
+    <span class="kicker reveal"><span>{{built.built_this_weekend}}</span></span>
+    <h2 class="reveal"><span>{{built.a_working_system_not}}</span></h2>
+    <ul class="ticks built-list reveal">
+      <li>{{built.a_real_hl7_order}}</li>
+      <li>{{built.ai_judges_the_whole}}</li>
+      <li>{{built.an_unverified_citation_is}}</li>
+      <li>{{built.89_461_report_sentences}}</li>
+      <li>{{built.case_summary_as_a}}</li>
+      <li>{{built.mcp_server_for_any}}</li>
+    </ul>
+    <p class="footnote reveal"><span>{{built.the_prototype_simulates_orders}}</span></p>
+  </div>
+</section>
+
+<section id="lekari" class="mz">
+  <div class="wrap">
+<div class="split" data-scene="timeline">
+<div class="txt">
+    <span class="kicker reveal"><span>{{physicians.for_physicians}}</span></span>
+    <h2 class="reveal"><span>{{physicians.the_whole_history_on}}</span></h2>
+        <h3 class="illus-t"><span>{{physicians.interactive_timeline}}</span></h3>
+        <p class="illus-p">{{physicians.scans_reports_treatment_labs}}</p>
+</div>
+<div class="slot"></div>
+</div>
+<div class="split rev" data-scene="body">
+<div class="txt">
+        <h3 class="illus-t"><span>{{physicians.2d_anatomical_map}}</span></h3>
+        <p class="illus-p">{{physicians.lights_up_only_areas}}</p>
+</div>
+<div class="slot"></div>
+</div>
+  </div>
+</section>
+
+<section id="dopady" class="mz">
+  <div class="wrap">
+<div class="split" data-scene="hours">
+<div class="txt">
+    <span class="kicker reveal"><span>{{nav.impact}}</span></span>
+    <h2 class="reveal"><span>{{impact.fewer_duplicates_shorter_waits}}</span></h2>
+    <div class="stats">
+      <div class="stat red reveal"><b><span data-count="34">34</span></b><p>{{impact.missing_scans_found_in}}</p></div>
+      <div class="stat reveal"><b><span data-count="60">60</span> %</b><p>{{impact.of_cases_would_start}}</p></div>
+      <div class="stat reveal"><b class="wide">10 h → 2 h</b><p>{{impact.work_for_40_cases}}</p><span class="est"><span>{{impact.estimate}}</span></span></div>
+      <div class="stat reveal"><b>~<span data-count="68">68</span></b><p>{{impact.phone_calls_saved}}</p><span class="est"><span>{{impact.estimate}}</span></span></div>
+    </div>
+</div>
+<div class="slot"></div>
+</div>
+  </div>
+</section>
+
+<section id="skala" class="alt mz">
+  <div class="wrap">
+<div class="split rev" data-scene="czmap">
+<div class="txt">
+    <span class="kicker reveal"><span>{{scale.scalability}}</span></span>
+    <h2 class="reveal"><span>{{scale.not_tied_to_one}}</span></h2>
+    <div class="grid g3">
+      <div class="card reveal"><h3><span>{{scale.the_hospital_changes_nothing}}</span></h3><p>{{scale.it_connects_what_it}}</p></div>
+      <div class="card reveal"><h3><span>{{scale.one_stack_per_hospital}}</span></h3><p>{{scale.on_prem_or_eu}}</p></div>
+      <div class="card reveal"><h3><span>{{scale.works_today}}</span></h3><p>{{scale.image_exchange_under_ehds}}</p></div>
+    </div>
+</div>
+<div class="slot"></div>
+</div>
+  </div>
+</section>
+
+<section class="dark mz">
+  <div class="wrap">
+<div class="split" data-scene="roadmap">
+<div class="txt">
+    <span class="kicker reveal"><span>{{roadmap.what_next}}</span></span>
+    <h2 class="reveal"><span>{{roadmap.for_us_this_is}}</span></h2>
+    <div class="roadmap reveal">
+      <div><b><span>{{roadmap.pilot_at_fn_motol}}</span></b><p>{{roadmap.real_orders_clinical_sign}}</p></div>
+      <div><b><span>{{roadmap.na_homolce_hospital}}</span></b><p>{{roadmap.second_site_connection_to}}</p></div>
+      <div><b><span>{{roadmap.vzp_data}}</span></b><p>{{roadmap.target_2028_01_01}}</p></div>
+    </div>
+</div>
+<div class="slot"></div>
+</div>
+  </div>
+</section>
+
+
+<!-- Tým -->
+<section id="tym">
+  <div class="wrap">
+    <span class="kicker reveal"><span>{{team.team_404_tumor_not}}</span></span>
+    <h2 class="reveal"><span>{{team.get_in_touch}}</span></h2>
+    <p class="sub reveal"><a class="mail-link" data-goatcounter-click="click-email-team" href="mailto:info@kompacs.cz?subject=KOMPACS">info@kompacs.cz</a></p>
+    <div class="team">
+      <div class="member reveal"><span class="avatar">VB</span><h3>Vojtěch Bešťák</h3><p class="role">{{team.role_vb}}</p><p class="org">{{team.phd_student}} · <abbr title="{{team.fel}}">ČVUT FEL</abbr></p><a data-goatcounter-click="click-linkedin-vb" href="https://www.linkedin.com/in/vojtech-bestak/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a></div>
+      <div class="member medic reveal"><span class="avatar">AK</span><h3>Adam Karas</h3><p class="role">{{team.role_ak}}</p><p class="org"><span>{{team.medical_student}}</span> · <abbr title="{{team.lf1}}">1. LF UK</abbr></p><a data-goatcounter-click="click-linkedin-ak" href="https://www.linkedin.com/in/adamkaras0/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a></div>
+      <div class="member reveal"><span class="avatar">PK</span><h3>Pavel Kos</h3><p class="role">{{team.role_pk}}</p><a data-goatcounter-click="click-linkedin-pk" href="https://www.linkedin.com/in/pavel-k-b81960112/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a></div>
+      <div class="member reveal"><span class="avatar">VN</span><h3>Vojtěch Novotný</h3><p class="role"><span>{{team.backend_integration}}</span></p><p class="org"><span>{{team.msc_student}}</span> · <abbr title="{{team.fit}}">ČVUT FIT</abbr></p><a data-goatcounter-click="click-linkedin-vn" href="https://www.linkedin.com/in/vojtechno/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark closing">
+  <div class="wrap">
+    <h2 class="reveal"><span class="kom">KOM</span>PACS. <span>{{closing.compact_data_so_you}}</span></h2>
+    <div class="ctas reveal">
+      <a data-goatcounter-click="click-write-to-us-closing" class="btn primary" href="mailto:info@kompacs.cz?subject=KOMPACS"><span>{{hero.write_to_us}}</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Rakathon 2026 · FN Motol · Nemocnice Na Homolce · InterSystems IRIS for Health</span>
+    <span><span>{{footer.prototype_not_a_medical}}</span></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>const I18N = {{page.js}};</script>
+<script src="/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/story.js"></script>
+<script src="/story-timeline.js"></script>
+<script src="/mesh-shapes.js"></script>
+<script src="/mesh.js"></script>
+<script data-goatcounter="https://kompacs.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

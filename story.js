@@ -8,7 +8,6 @@ const svgEl = (tag, attrs, parent) => {
   if (parent) parent.appendChild(el);
   return el;
 };
-const bi = (cs, en) => `<tspan data-l="cs">${cs}</tspan><tspan data-l="en">${en}</tspan>`;
 const FONT = 'Plus Jakarta Sans, sans-serif';
 const compassSvg = document.getElementById('compass');
 const steps = [...document.querySelectorAll('.story .step')];
@@ -36,7 +35,7 @@ const cardData = [
   { m: 'MR', d: '3/2026', src: 'Bulovka', lane: 'rep', rel: true, miss: true, region: 'pelvis' },
   { m: 'RTG', d: '5/2026', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
   { m: 'CT', d: '8/2026', src: 'VZP', lane: 'ins', rel: true, miss: true, region: 'pelvis' },
-  { m: 'USG', d: '2019', src: 'zpráva', lane: 'rep' },
+  { m: 'USG', d: '2019', src: tr('story.report'), lane: 'rep' },
   { m: 'RTG', d: '2017', src: 'NIS', lane: 'nis' },
   { m: 'CT', d: '2014', src: 'NIS', lane: 'nis' },
   { m: 'USG', d: '2016', src: 'VZP', lane: 'ins' },
@@ -79,15 +78,15 @@ function makeVerdict(x, y) {
   svgEl('rect', { x: 0, y: 0, width: 360, height: 168, rx: 14, fill: '#FFFFFF' }, g);
   svgEl('rect', { x: 18, y: 18, width: 104, height: 26, rx: 13, fill: '#DDF2EC' }, g);
   const tag = svgEl('text', { x: 70, y: 36, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 800, fill: '#155B4F', 'font-family': FONT }, g);
-  tag.innerHTML = bi('relevantní ✓', 'relevant ✓');
+  tag.textContent = tr('story.relevant');
   const title = svgEl('text', { x: 18, y: 72, 'font-size': 16, 'font-weight': 800, fill: '#14232A', 'font-family': FONT }, g);
-  title.innerHTML = bi('CT hrudníku a břicha · 12/2025', 'Chest and abdomen CT · 12/2025');
+  title.textContent = tr('story.verdict_title');
   const why = svgEl('text', { x: 18, y: 98, 'font-size': 13, fill: '#2C3D44', 'font-family': FONT }, g);
-  why.innerHTML = bi('Proč: nejnovější CT pro srovnání. Thomayerova n.', 'Why: latest CT for comparison. Thomayer Hosp.');
+  why.textContent = tr('story.verdict_why');
   const cite = svgEl('text', { x: 18, y: 124, 'font-size': 13, 'font-weight': 700, fill: '#0F6B66', 'text-decoration': 'underline', 'font-family': FONT }, g);
-  cite.innerHTML = bi('Modrá kniha ČOS, s. 220', 'Modrá kniha (guideline), p. 220');
+  cite.textContent = tr('story.verdict_cite');
   const req = svgEl('text', { x: 18, y: 150, 'font-size': 12.5, fill: '#5C6E74', 'font-family': FONT }, g);
-  req.innerHTML = bi('Žádost: e-mail připraven ke schválení', 'Request: e-mail ready for approval');
+  req.textContent = tr('story.verdict_request');
   return g;
 }
 

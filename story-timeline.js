@@ -3,9 +3,9 @@ const LANES = { nis: -190, rep: -20, ins: 150 };
 const LANE_X0 = -255, LANE_DX = 112;
 const TL_Y = -110, tlX = i => -350 + i * 92, PLAN_X = 375;
 
-const laneLabels = Object.entries({ nis: ['NIS', 'NIS'], rep: ['Zprávy (AI)', 'Reports (AI)'], ins: ['Pojišťovna', 'Insurer'] }).map(([k, [cs, en]]) => {
+const laneLabels = Object.entries({ nis: 'NIS', rep: tr('story.lane_reports'), ins: tr('story.lane_insurer') }).map(([k, label]) => {
   const t = svgEl('text', { x: -395, y: LANES[k] + 5, 'font-size': 14, 'font-weight': 800, fill: '#7FE0C9', opacity: 0, 'font-family': FONT, 'letter-spacing': '0.04em' }, cardsG);
-  t.innerHTML = bi(cs.toUpperCase(), en.toUpperCase());
+  t.textContent = label.toUpperCase();
   return t;
 });
 const laneIndex = {};
@@ -18,7 +18,7 @@ gsap.set(axis, { strokeDasharray: 775, strokeDashoffset: 775 });
 const plan = svgEl('g', { transform: T(PLAN_X, TL_Y), opacity: 0 }, compassSvg);
 svgEl('path', { d: 'M0 -13 L13 0 L0 13 L-13 0Z', fill: '#FFFFFF' }, plan);
 const planT = svgEl('text', { x: 0, y: -26, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 800, fill: '#FFFFFF', 'font-family': FONT }, plan);
-planT.innerHTML = bi('plán', 'planned');
+planT.textContent = tr('common.planned');
 
 const ping = svgEl('circle', { r: 11, fill: 'none', stroke: '#7FE0C9', 'stroke-width': 2, opacity: 0 }, missCard.g);
 const mi = relCards.indexOf(missCard);
