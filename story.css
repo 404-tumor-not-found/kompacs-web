@@ -66,7 +66,9 @@
   .s0 { padding-top: 10px; }
   .dive-wrap { display: none; }
 }
-.story .s0 h1 { font-size: clamp(30px, 3.6vw, 46px); margin-top: 34px; font-weight: 800; }
+.story .s0 h1 { font-size: inherit; line-height: inherit; letter-spacing: normal; }
+.story .s0 .expand { display: block; }
+.story .s0 .tagline { display: block; margin-top: 34px; font-size: clamp(28px, 3vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #fff; }
 .story .s0 .lead { margin-top: 18px; font-size: 18.5px; color: rgba(255,255,255,.78); max-width: 34em; }
 #needle, #beam, #priors, #caption { transition: opacity .4s; }
 .story-on #needle, .story-on #beam, .story-on #priors { opacity: 0 !important; }
@@ -89,5 +91,9 @@
 }
 @media (min-width: 961px) {
   .story { padding: 0; }
-  .story .s0 { justify-content: flex-start; padding-top: max(110px, 14vh); }
+  .story .s0 { padding: 68px 0 0; }
+  .story-stage .stage { padding-top: 68px; }
+  .story-stage #compass { max-height: calc(100vh - 140px); }
+  /* The caption must not count when the compass centers against the text. */
+  .story-stage .caption { margin-bottom: calc(-1.6em - 8px); }
 }

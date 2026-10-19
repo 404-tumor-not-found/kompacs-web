@@ -27,7 +27,7 @@ const verdict = makeVerdict(-200, TL_Y + 90);
 
 const captionEl = document.getElementById('caption');
 
-document.fonts.ready.then(() => {
+document.fonts.ready.then(() => introDone).then(() => {
   if (!desktopStory) return;
   holdCompassOnStory();
 
