@@ -89,5 +89,9 @@
 }
 @media (min-width: 961px) {
   .story { padding: 0; }
-  .story .s0 { justify-content: flex-start; padding-top: max(110px, 14vh); }
+  .story .s0 { padding: 68px 0 0; }
+  .story-stage .stage { padding-top: 68px; }
+  .story-stage #compass { max-height: calc(100vh - 140px); }
+  /* The caption must not count when the compass centers against the text. */
+  .story-stage .caption { margin-bottom: calc(-1.6em - 8px); }
 }
