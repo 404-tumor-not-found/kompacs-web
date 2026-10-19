@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "label": "CZ",
+    "og_locale": "cs_CZ",
+    "lang_label": "Jazyk",
+    "title": "KOMPACS · Předchozí vyšetření z PACS před CT, MR a PET",
+    "description": "KOMPACS (KOMparátor PACS) najde před CT, MR, PET nebo MDT relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí. Vítěz Rakathonu 2026.",
+    "og_title": "KOMPACS · Žádné vyšetření bez srovnání.",
+    "og_description": "Před CT, MR, PET nebo MDT najde relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí.",
+    "award": "1. místo, Rakathon 2026"
+  },
+  "nav": {
+    "problem": "Problém",
+    "solution": "Řešení",
+    "innovation": "Inovace",
+    "security": "Bezpečnost",
+    "impact": "Dopady",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "1st_place_rakathon_2026": "1. místo · Rakathon 2026",
+    "no_exam_without_a": "Žádné vyšetření bez srovnání.",
+    "before_a_ct_mri": "Před CT, MR, PET nebo MDT najde relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí.",
+    "available": "dostupné",
+    "missing": "chybí",
+    "to_decide": "k rozhodnutí",
+    "how_it_works": "Jak to funguje",
+    "write_to_us": "Napište nám"
+  },
+  "problem": {
+    "the_problem": "Problém",
+    "an_old_scan_is": "Chybí starý snímek. Případ se odloží, sestra visí na telefonu.",
+    "before_a_ct_or": "Před CT nebo MDT chybí v PACS snímky pro srovnání.",
+    "where_they_were_done": "Kde vznikly, stojí jen ve větě ve zprávě.",
+    "the_physician_waits_a": "Lékař odkládá, sestra volá, pacient čeká.",
+    "of_10": "z 10",
+    "cases_in_the_demo": "případů v demo datech nemá snímek, který lékař potřebuje.",
+    "radiologists_love_two_things": "Radiologové milují v životě dvě věci: tmu a kompletní data pacientů. Bohužel, dnešní zdravotnictví jim většinou dopřeje jen tu tmu.",
+    "medical_student_kompacs": "medik, KOMPACS"
+  },
+  "solution": {
+    "the_solution": "Řešení",
+    "the_check_runs_by": "Kontrola se spustí sama, ve chvíli objednávky.",
+    "exactly_the_workflow_from": "Přesně podle zadání FN Motol a Nemocnice Na Homolce:",
+    "trigger": "spouštěč",
+    "what_is_relevant": "co je relevantní",
+    "check_pacs": "kontrola PACS",
+    "resolution": "dohledání",
+    "nis_record": "Záznam v NIS",
+    "mention_in_a_report": "Zmínka ve zprávě (AI)",
+    "health_insurer": "Zdravotní pojišťovna",
+    "manual": "Ručně",
+    "ai_verdict": "Hodnocení AI",
+    "relevant_or_not_with": "Relevantní, nebo ne. S důvodem a citací Modré knihy ČOS.",
+    "coordinator": "Koordinátor/ka",
+    "decides_the_uncertain_ones": "Rozhodne nejisté. Schválí žádost jedním klikem.",
+    "images_arrive_the_status": "Snímky dorazí. Stav se přepne na „dostupné“."
+  },
+  "ai": {
+    "ai_that_cites_its": "AI, která cituje zdroj",
+    "for_every_scan_a": "Ke každému snímku důvod, větu ze zprávy a ověřenou citaci Modré knihy ČOS. Když si AI není jistá, rozhoduje člověk.",
+    "patients_often_forget_the": "Pacienti často zapomínají. Pojišťovna ale nikdy nezapomene, co komu zaplatila.",
+    "vzp_data_target_2028": "<b>Data VZP:</b> cílově od 1. 1. 2028 (konzultováno se zástupcem VZP). V prototypu simulovaná.",
+    "alt_verdict": "Hodnocení AI s citací Modré knihy"
+  },
+  "compass": {
+    "searching_prior_exams": "Hledám předchozí vyšetření…",
+    "found_in_a_report": "Nalezeno ve zprávě, <b class=\"miss\">chybí v PACS</b>",
+    "request_sent_available_in": "Žádost odeslána → <b>dostupné v PACS</b>",
+    "aria": "Kompas hledá chybějící předchozí vyšetření"
+  },
+  "data": {
+    "data_from_40_demo": "Data ze 40 demo případů",
+    "where_the_comparison_gets": "Kde se ztrácí srovnání.",
+    "cases_lack_a_scan": "případů nemá v PACS snímek, který lékař potřebuje",
+    "scan_missing_24": "chybí snímek (24)",
+    "all_available_16": "vše dostupné (16)",
+    "from_candidates_to_missing": "od kandidátů k chybějícím snímkům",
+    "candidates": "Kandidáti",
+    "relevant": "Relevantní",
+    "missing_in_pacs": "Chybí v PACS",
+    "reports_ai_74": "zprávy (AI) 74",
+    "insurer_14": "pojišťovna 14",
+    "all_34_missing_scans": "Všech 34 chybějících je zmíněno jen v textu zpráv. Hledání v NIS ani PACS je nenajde.",
+    "waffle_aria": "24 ze 40 případů chybí snímek",
+    "title_reports": "Zprávy: 74",
+    "title_insurer": "Pojišťovna: 14"
+  },
+  "innovation": {
+    "a_non_obvious_approach": "Neočividný přístup",
+    "the_obvious_solution_would": "Očividné řešení by chybějící snímky nenašlo.",
+    "obvious_approach": "Očividné řešení",
+    "where_to_search": "Kde hledat",
+    "query_nis_and_pacs": "Dotaz do NIS a PACS. Najde <b>0 z 34</b> chybějících.",
+    "ai_reads_report_text": "AI čte text zpráv: „CT v Thomayerově nemocnici 12/2025“. Najde <b>všech 34</b>.",
+    "what_the_patient_forgot": "Co pacient zapomněl",
+    "ask_the_patient_they": "Zeptat se pacienta. Často si nepamatuje, kde a kdy.",
+    "ask_the_insurer_it": "Zeptat se pojišťovny. Ví o vyšetřeních, která žádná jedna nemocnice nezná (14 v demu).",
+    "how_to_request_scans": "Jak snímky vyžádat",
+    "an_ai_voice_bot": "AI hlasový robot obvolává nemocnice. Nadiktuje citlivá data komukoli, kdo to zvedne.",
+    "a_precise_e_mail": "Přesný e-mail nebo FHIR žádost. Ověřený kontakt. Schvaluje člověk.",
+    "why_a_scan_is": "Proč je snímek relevantní",
+    "a_black_box_ai": "Černá skříňka AI, nebo pevná pravidla. Lékař nevidí proč.",
+    "a_reason_the_source": "Důvod, věta ze zprávy a ověřená citace Modré knihy ČOS. Nejisté rozhoduje člověk.",
+    "deployment": "Nasazení",
+    "a_new_system_the": "Nový systém. Nemocnice mění procesy, integrace je drahá a pomalá.",
+    "connects_what_the_hospital": "Připojí, co nemocnice má: HL7 v2, FHIR, PACS feed. Nemocnice nic nemění."
+  },
+  "security": {
+    "security_and_integration": "Bezpečnost a integrace",
+    "no_ai_robots_on": "Žádní AI roboti na telefonu. Přesný e-mail na jedno kliknutí.",
+    "picture_our_ai_reaching": "Představa, že se naše AI dovolá vrátnému a odrecituje mu rodné číslo a onkologickou diagnózu, je sice úsměvná, ale váš GDPR pověřenec by z toho měl infarkt.",
+    "to": "Komu",
+    "subject": "Věc",
+    "image_request_chest_and": "Žádost o snímky: CT hrudníku a břicha 12/2025",
+    "hello_for_a_ct": "Dobrý den, pro plánované CT dne 23. 10. žádáme o zaslání snímků a popisu CT hrudníku a břicha z 12/2025 přes ePACS. Pacient: <span class=\"blur\">PAC-DEMO-001</span>. Děkujeme.",
+    "send": "Odeslat",
+    "ai_draft_approved_by": "návrh od AI · schvaluje koordinátor/ka",
+    "hl7_v2_in_fhir": "HL7 v2 dovnitř, FHIR R4 uvnitř, vektorové hledání v IRIS.",
+    "data_stays_in_the": "Data zůstávají v EU",
+    "report_text_goes_only": "Text zpráv jen do modelu v EU Data Zone. Každé hodnocení AI má auditní stopu.",
+    "a_human_decides": "Rozhoduje člověk",
+    "ai_suggests_nothing_leaves": "AI navrhuje. Nic neodejde bez koordinátora. Prototyp, není zdravotnický prostředek.",
+    "mail_aria": "Ukázka návrhu e-mailu"
+  },
+  "built": {
+    "built_this_weekend": "Postaveno za víkend",
+    "a_working_system_not": "Funkční systém, ne slajdy.",
+    "a_real_hl7_order": "Skutečná HL7 objednávka → IRIS → FHIR za ~1 s",
+    "ai_judges_the_whole": "AI hodnotí celý případ a cituje stránku Modré knihy",
+    "an_unverified_citation_is": "Neověřenou citaci systém zahodí",
+    "89_461_report_sentences": "89 461 vět ze zpráv jako vektory v IRIS",
+    "case_summary_as_a": "Souhrn případu jako verzovaný FHIR dokument",
+    "mcp_server_for_any": "MCP server pro libovolného AI agenta",
+    "the_prototype_simulates_orders": "V prototypu simulujeme objednávky, data jiných nemocnic a pojišťovny a odeslání e-mailu."
+  },
+  "physicians": {
+    "for_physicians": "Pro lékaře",
+    "the_whole_history_on": "Celá historie na jedné ose. Červená vlajka, když chybí kritický snímek.",
+    "interactive_timeline": "Interaktivní časová osa",
+    "scans_reports_treatment_labs": "Snímky, zprávy, léčba, laboratoř. Hledání podle významu.",
+    "2d_anatomical_map": "2D anatomická mapa",
+    "lights_up_only_areas": "Svítí jen oblasti s doloženým vyšetřením. Chybějící červeně."
+  },
+  "impact": {
+    "fewer_duplicates_shorter_waits": "Méně duplicit. Kratší čekání. Méně záření pro onkologické pacienty.",
+    "missing_scans_found_in": "chybějících snímků nalezeno ve 40 případech",
+    "of_cases_would_start": "případů by začalo bez srovnání",
+    "work_for_40_cases": "práce na 40 případů",
+    "estimate": "odhad",
+    "phone_calls_saved": "telefonátů ušetřeno"
+  },
+  "scale": {
+    "scalability": "Škálovatelnost",
+    "not_tied_to_one": "Není vázaný na jednu nemocnici.",
+    "the_hospital_changes_nothing": "Nemocnice nic nemění",
+    "it_connects_what_it": "Připojí, co má: HL7 v2, FHIR, PACS feed.",
+    "one_stack_per_hospital": "Jeden balík na nemocnici",
+    "on_prem_or_eu": "On-prem nebo EU cloud. Podpora přes českého IT integrátora.",
+    "works_today": "Funguje už dnes",
+    "image_exchange_under_ehds": "Sdílení snímků přes EHDS přijde až v roce 2031."
+  },
+  "roadmap": {
+    "what_next": "Co dál",
+    "for_us_this_is": "Tohle pro nás není jen víkendový hackathon.",
+    "pilot_at_fn_motol": "Pilot FN Motol",
+    "real_orders_clinical_sign": "Skutečné objednávky, klinické potvrzení AI.",
+    "na_homolce_hospital": "Nemocnice Na Homolce",
+    "second_site_connection_to": "Druhé pracoviště, napojení na ePACS.",
+    "vzp_data": "Data VZP",
+    "target_2028_01_01": "Cílově od 1. 1. 2028."
+  },
+  "team": {
+    "team_404_tumor_not": "Tým 404 Tumor Not Found",
+    "get_in_touch": "Ozvěte se nám.",
+    "medical_student": "Medik",
+    "backend_integration": "backend, integrace",
+    "msc_student": "Ing. studium",
+    "role_vb": "ML / data, frontend",
+    "role_ak": "product owner",
+    "role_pk": "product, business",
+    "phd_student": "PhD student",
+    "fel": "ČVUT, Fakulta elektrotechnická",
+    "lf1": "1. lékařská fakulta Univerzity Karlovy",
+    "fit": "ČVUT, Fakulta informačních technologií"
+  },
+  "closing": {
+    "compact_data_so_you": "Kompaktní data, abyste vy mohli v klidu léčit."
+  },
+  "footer": {
+    "prototype_not_a_medical": "Prototyp, není zdravotnický prostředek."
+  },
+  "showcase": {
+    "alt_case": "KOMPACS: detail případu s úkoly koordinátora"
+  },
+  "js": {
+    "common": {
+      "planned": "plán"
+    },
+    "compass": {
+      "chest_ct": "CT hrudníku 12/2025",
+      "mri": "MR 7/2025",
+      "xray": "RTG 5/2026",
+      "abdomen_ct": "CT břicha 4/2025"
+    },
+    "story": {
+      "report": "zpráva",
+      "relevant": "relevantní ✓",
+      "verdict_title": "CT hrudníku a břicha · 12/2025",
+      "verdict_why": "Proč: nejnovější CT pro srovnání. Thomayerova n.",
+      "verdict_cite": "Modrá kniha ČOS, s. 220",
+      "verdict_request": "Žádost: e-mail připraven ke schválení",
+      "lane_reports": "Zprávy (AI)",
+      "lane_insurer": "Pojišťovna"
+    },
+    "mesh": {
+      "imaging": "ZOBRAZOVÁNÍ",
+      "reports": "ZPRÁVY",
+      "treatment": "LÉČBA",
+      "ct_missing": "CT · chybí v PACS",
+      "report_quote": "„CT v Thomayerově nemocnici 12/2025“",
+      "chest": "Hrudník · CT 2/2026 ✓",
+      "abdomen": "Břicho · CT 12/2025 chybí",
+      "pelvis": "Pánev · MR 7/2025 ✓",
+      "prague": "Praha · FN Motol, Homolka",
+      "one_stack": "Jeden balík na nemocnici",
+      "on_prem": "on-prem nebo EU cloud · český IT integrátor",
+      "rollout_note": "ilustrace možného rozšíření",
+      "hours_today": "Dnes · 10 h na 40 případů",
+      "hours_with": "S KOMPACS · 2 h",
+      "hours_note": "odhad · 1 dílek = 1 hodina · ~68 telefonátů méně",
+      "scans_found": "34 chybějících snímků nalezeno",
+      "roadmap_motol": "Pilot FN Motol",
+      "roadmap_motol_sub": "skutečné objednávky",
+      "roadmap_homolka": "Nemocnice Na Homolce",
+      "roadmap_homolka_sub": "napojení na ePACS",
+      "roadmap_vzp": "Data VZP",
+      "roadmap_vzp_sub": "cílově 1. 1. 2028",
+      "roadmap_ehds": "EHDS",
+      "roadmap_ehds_sub": "sdílení snímků 2031"
+    }
+  }
+}
