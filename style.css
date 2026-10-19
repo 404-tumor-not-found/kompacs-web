@@ -190,12 +190,14 @@ h2 { font-size: clamp(30px, 3.6vw, 46px); margin-top: 12px; font-weight: 800; ma
 
 /* Team */
 .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 52px; }
-.member { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+.member { display: flex; flex-direction: column; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
 .member .avatar { width: 56px; height: 56px; font-size: 18px; background: var(--soft); color: var(--primary); }
 .member.medic .avatar { background: var(--primary); color: #fff; }
 .member h3 { margin-top: 16px; font-size: 18px; font-weight: 800; }
 .member .role { font-size: 14.5px; color: var(--subtle); margin-top: 2px; }
-.member a { display: inline-block; margin-top: 12px; font-size: 14px; color: var(--primary); font-weight: 700; text-decoration: none; word-break: break-all; }
+.member .org { margin-top: 10px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); }
+.member .org abbr { text-decoration: none; cursor: help; white-space: nowrap; }
+.member a { display: inline-block; margin-top: auto; padding-top: 14px; font-size: 14px; color: var(--primary); font-weight: 700; text-decoration: none; word-break: break-all; }
 .member a:hover { text-decoration: underline; }
 
 .closing { text-align: center; }
