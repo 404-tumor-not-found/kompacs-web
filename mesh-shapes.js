@@ -52,52 +52,40 @@ const MS = (() => {
     };
   }
 
-  // Patient body as low-poly shards. Chest and pelvis have priors, the abdomen is missing and planned.
+  // Patient body as a few hand-placed shards, deliberately uneven. Chest and pelvis have priors, the abdomen is missing and planned.
   function body(pal) {
-    const GAP = 2.5;
+    const GAP = 3;
     const inset = pts => {
       const cx = pts.reduce((a, p) => a + p[0], 0) / pts.length, cy = pts.reduce((a, p) => a + p[1], 0) / pts.length;
       return pts.map(([x, y]) => { const d = Math.hypot(cx - x, cy - y) || 1; return [x + ((cx - x) / d) * GAP, y + ((cy - y) / d) * GAP]; });
     };
-    const quadTris = (l0, r0, r1, l1, flip) => (flip ? [[l0, r0, l1], [r0, r1, l1]] : [[l0, r0, r1], [l0, r1, l1]]);
-    // A limb: points [x, y, width] along its axis, split into zig-zag triangles.
-    const strip = pts => pts.slice(1).flatMap(([x1, y1, w1], i) => {
-      const [x0, y0, w0] = pts[i];
-      return quadTris([x0 - w0 / 2, y0], [x0 + w0 / 2, y0], [x1 + w1 / 2, y1], [x1 - w1 / 2, y1], i % 2);
-    });
-    const mirror = pts => pts.map(([x, y]) => [-x, y]);
-    const shards = [];
-    const add = (tris, kind) => tris.forEach(t => shards.push({ t, kind }));
-
-    add(fan(0, -252, 38), 'grey');
-    add(quadTris([-12, -214], [12, -214], [15, -201], [-15, -201]), 'grey');
-    const TORSO = [[-190, 84], [-145, 78], [-100, 66], [-55, 58], [-10, 62], [35, 72], [75, 70]];
-    const REGION = ['chest', 'chest', 'abd', 'abd', 'pelvis', 'pelvis'];
-    for (let r = 0; r < 6; r++) for (let c = 0; c < 3; c++) {
-      const [y0, w0] = TORSO[r], [y1, w1] = TORSO[r + 1];
-      const x = (w, k) => -w + (k * 2 * w) / 3;
-      add(quadTris([x(w0, c), y0], [x(w0, c + 1), y0], [x(w1, c + 1), y1], [x(w1, c), y1], (r + c) % 2), REGION[r]);
-    }
-    const shoulder = [[[16, -203], [84, -191], [14, -191]], [[90, -185], [114, -185], [98, -198]]];
-    const arm = strip([[102, -184, 24], [111, -90, 20], [121, 10, 15], [127, 62, 5]]);
-    const leg = strip([[36, 79, 62], [35, 132, 52], [33, 185, 42], [31, 235, 34], [30, 284, 26]]);
-    const foot = [[17, 288], [44, 288], [56, 304], [15, 304]];
-    for (const part of [shoulder, arm, leg, [foot]]) add([...part, ...part.map(mirror)], 'grey');
-
+    const L0 = [-86, -194], M0 = [8, -204], R0 = [92, -198];
+    const L1 = [-66, -100], M1 = [-6, -106], R1 = [70, -96];
+    const L2 = [-58, -10], M2 = [10, -6], R2 = [60, -14];
+    const L3 = [-72, 66], M3 = [-4, 76], R3 = [74, 62];
+    const shards = [
+      ...[[[-36, -258], [4, -292], [34, -266]], [[-36, -258], [34, -266], [24, -222]], [[-36, -258], [24, -222], [-20, -218]], [[-14, -214], [18, -216], [8, -204]]].map(t => [t, 'grey']),
+      ...[[L0, M0, L1], [M0, M1, L1], [M0, R0, R1], [M0, R1, M1]].map(t => [t, 'chest']),
+      ...[[L1, M1, M2], [L1, M2, L2], [M1, R1, M2], [R1, R2, M2]].map(t => [t, 'abd']),
+      ...[[L2, M2, L3], [M2, M3, L3], [M2, R2, R3], [M2, R3, M3]].map(t => [t, 'pelvis']),
+      ...[
+        [[-120, -180], [-91, -190], [-94, -84]], [[-120, -180], [-94, -84], [-122, -90]], [[-122, -90], [-94, -84], [-100, 6]], [[-122, -90], [-100, 6], [-122, 2]], [[-122, 2], [-100, 6], [-112, 50]],
+        [[97, -194], [126, -184], [140, -92]], [[97, -194], [140, -92], [113, -88]], [[113, -88], [140, -92], [154, -4]], [[113, -88], [154, -4], [130, 0]], [[130, 0], [154, -4], [154, 46]],
+        [[-70, 74], [-10, 84], [-20, 182]], [[-70, 74], [-20, 182], [-58, 180]], [[-58, 180], [-20, 182], [-28, 286]], [[-58, 180], [-28, 286], [-52, 286]], [[-52, 288], [-26, 288], [-66, 304]],
+        [[2, 84], [72, 70], [56, 178]], [[2, 84], [56, 178], [18, 184]], [[18, 184], [56, 178], [50, 282]], [[18, 184], [50, 282], [26, 286]], [[24, 290], [52, 286], [64, 304]],
+      ].map(t => [t, 'grey']),
+    ];
+    const look = { chest: [pal.hi, pal.c, pal.a], pelvis: [pal.c, pal.hi, pal.a], abd: [pal.miss, pal.miss, pal.miss], grey: [pal.grey, pal.grey, pal.grey] };
+    const alpha = { chest: [1, 0.9, 0.85], pelvis: [0.9, 1, 0.85], abd: [0.55, 0.42, 0.65], grey: [0.95, 0.75, 0.85] };
     const dx = -110;
-    const look = {
-      chest: [pal.hi, pal.c], pelvis: [pal.hi, pal.c],
-      abd: [pal.miss, pal.miss], grey: [pal.grey, pal.grey],
-    };
-    const alpha = { chest: [1, 0.85], pelvis: [1, 0.85], abd: [0.55, 0.4], grey: [0.95, 0.75] };
-    const polys = shards.map(({ t, kind }, i) => P(inset(t).map(([x, y]) => [x + dx, y]), look[kind][i % 2], alpha[kind][i % 2]));
+    const polys = shards.map(([t, kind], i) => P(inset(t).map(([x, y]) => [x + dx, y]), look[kind][i % 3], alpha[kind][i % 3]));
     return {
       polys,
       deco: g => {
-        el('rect', { x: dx - 80, y: -106, width: 160, height: 100, rx: 12, fill: 'none', stroke: pal.dec, 'stroke-width': 3, 'stroke-dasharray': '8 6', class: 'pulse' }, g);
-        [[-140, 'mesh.chest', pal.hi], [-50, 'mesh.abdomen', pal.miss], [42, 'mesh.pelvis', pal.hi]].forEach(([y, k, f]) => {
-          el('line', { x1: dx + 86, y1: y - 6, x2: dx + 150, y2: y - 6, stroke: pal.line, 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, g);
-          T(g, dx + 160, y, tr(k), { fill: f, 'font-size': 19 });
+        el('rect', { x: dx - 76, y: -112, width: 156, height: 110, rx: 12, fill: 'none', stroke: pal.dec, 'stroke-width': 3, 'stroke-dasharray': '8 6', class: 'pulse' }, g);
+        [[-148, 'mesh.chest', pal.hi, 90], [-52, 'mesh.abdomen', pal.miss, 86], [30, 'mesh.pelvis', pal.hi, 76]].forEach(([y, k, f, x0]) => {
+          el('line', { x1: dx + x0, y1: y - 6, x2: dx + 168, y2: y - 6, stroke: pal.line, 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, g);
+          T(g, dx + 178, y, tr(k), { fill: f, 'font-size': 19 });
         });
       },
     };
