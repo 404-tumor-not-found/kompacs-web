@@ -140,7 +140,14 @@
     "interactive_timeline": "Interaktivní časová osa",
     "scans_reports_treatment_labs": "Snímky, zprávy, léčba, laboratoř. Hledání podle významu.",
     "2d_anatomical_map": "2D anatomická mapa",
-    "lights_up_only_areas": "Svítí jen oblasti s doloženým vyšetřením. Chybějící červeně."
+    "lights_up_only_areas": "Ke každé oblasti těla vidí lékař předchozí vyšetření, jejich datum a zda jsou v PACS.",
+    "chest": "Hrudník",
+    "abdomen": "Břicho",
+    "pelvis": "Pánev",
+    "available": "dostupné",
+    "missing": "chybí",
+    "planned_exam": "plánované vyšetření",
+    "mr": "MR"
   },
   "impact": {
     "fewer_duplicates_shorter_waits": "Méně duplicit. Kratší čekání. Méně záření pro onkologické pacienty.",
@@ -219,9 +226,9 @@
       "treatment": "LÉČBA",
       "ct_missing": "CT · chybí v PACS",
       "report_quote": "„CT v Thomayerově nemocnici 12/2025“",
-      "chest": "Hrudník · CT 2/2026 ✓",
-      "abdomen": "Břicho · CT 12/2025 chybí",
-      "pelvis": "Pánev · MR 7/2025 ✓",
+      "chest": "Hrudník ✓",
+      "abdomen": "Břicho · chybí",
+      "pelvis": "Pánev ✓",
       "prague": "Praha · FN Motol, Homolka",
       "one_stack": "Jeden balík na nemocnici",
       "on_prem": "on-prem nebo EU cloud · český IT integrátor",

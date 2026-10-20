@@ -356,6 +356,16 @@
 <div class="txt">
         <h3 class="illus-t"><span>{{physicians.2d_anatomical_map}}</span></h3>
         <p class="illus-p">{{physicians.lights_up_only_areas}}</p>
+        <dl class="regions reveal">
+          <div><dt>{{physicians.chest}}</dt><dd class="ok">CT 2/2026 · {{physicians.available}}</dd></div>
+          <div><dt>{{physicians.abdomen}} <span class="plan">{{physicians.planned_exam}}</span></dt><dd class="miss">CT 12/2025 · {{physicians.missing}}</dd><dd class="ok">CT 9/2024 · {{physicians.available}}</dd></div>
+          <div><dt>{{physicians.pelvis}}</dt><dd class="ok">{{physicians.mr}} 7/2025 · {{physicians.available}}</dd></div>
+        </dl>
+        <div class="legend">
+          <span><i class="w ok"></i><span>{{physicians.available}}</span></span>
+          <span><i class="w miss"></i><span>{{physicians.missing}}</span></span>
+          <span><i class="w plan"></i><span>{{physicians.planned_exam}}</span></span>
+        </div>
 </div>
 <div class="slot"></div>
 </div>

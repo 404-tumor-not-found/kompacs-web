@@ -52,50 +52,51 @@ const MS = (() => {
     };
   }
 
-  // Patient body: chest and pelvis have priors, the abdomen is flagged.
+  // Patient body as low-poly shards. Chest and pelvis have priors, the abdomen is missing and planned.
   function body(pal) {
-    const ROWS = [-180, -120, -60, 10, 70];
-    const halfW = y => (y <= -60 ? lerp(92, 72, (y + 180) / 120) : y <= 10 ? lerp(72, 64, (y + 60) / 70) : lerp(64, 74, (y - 10) / 60));
-    const tx = (c, y) => -halfW(y) + (c * 2 * halfW(y)) / 3;
-    const quads = [], reg = [];
-    for (let r = 0; r < 4; r++) for (let c = 0; c < 3; c++) {
-      const y0 = ROWS[r], y1 = ROWS[r + 1];
-      quads.push([[tx(c, y0), y0], [tx(c + 1, y0), y0], [tx(c + 1, y1), y1], [tx(c, y1), y1]]);
-      reg.push(r < 2 ? 'chest' : r === 2 ? 'abd' : 'pelvis');
+    const GAP = 2.5;
+    const inset = pts => {
+      const cx = pts.reduce((a, p) => a + p[0], 0) / pts.length, cy = pts.reduce((a, p) => a + p[1], 0) / pts.length;
+      return pts.map(([x, y]) => { const d = Math.hypot(cx - x, cy - y) || 1; return [x + ((cx - x) / d) * GAP, y + ((cy - y) / d) * GAP]; });
+    };
+    const quadTris = (l0, r0, r1, l1, flip) => (flip ? [[l0, r0, l1], [r0, r1, l1]] : [[l0, r0, r1], [l0, r1, l1]]);
+    // A limb: points [x, y, width] along its axis, split into zig-zag triangles.
+    const strip = pts => pts.slice(1).flatMap(([x1, y1, w1], i) => {
+      const [x0, y0, w0] = pts[i];
+      return quadTris([x0 - w0 / 2, y0], [x0 + w0 / 2, y0], [x1 + w1 / 2, y1], [x1 - w1 / 2, y1], i % 2);
+    });
+    const mirror = pts => pts.map(([x, y]) => [-x, y]);
+    const shards = [];
+    const add = (tris, kind) => tris.forEach(t => shards.push({ t, kind }));
+
+    add(fan(0, -252, 38), 'grey');
+    add(quadTris([-12, -214], [12, -214], [15, -201], [-15, -201]), 'grey');
+    const TORSO = [[-190, 84], [-145, 78], [-100, 66], [-55, 58], [-10, 62], [35, 72], [75, 70]];
+    const REGION = ['chest', 'chest', 'abd', 'abd', 'pelvis', 'pelvis'];
+    for (let r = 0; r < 6; r++) for (let c = 0; c < 3; c++) {
+      const [y0, w0] = TORSO[r], [y1, w1] = TORSO[r + 1];
+      const x = (w, k) => -w + (k * 2 * w) / 3;
+      add(quadTris([x(w0, c), y0], [x(w0, c + 1), y0], [x(w1, c + 1), y1], [x(w1, c), y1], (r + c) % 2), REGION[r]);
     }
-    for (const s of [-1, 1]) for (let r = 0; r < 4; r++) {
-      const t0 = r / 4, t1 = (r + 1) / 4, y0 = lerp(-176, 58, t0), y1 = lerp(-176, 58, t1);
-      quads.push([[s * lerp(98, 112, t0), y0], [s * lerp(130, 144, t0), y0], [s * lerp(130, 144, t1), y1], [s * lerp(98, 112, t1), y1]]);
-      reg.push('limb');
-    }
-    for (const s of [-1, 1]) for (let c = 0; c < 2; c++) for (let r = 0; r < 4; r++) {
-      const t0 = r / 4, t1 = (r + 1) / 4, y0 = lerp(70, 284, t0), y1 = lerp(70, 284, t1);
-      const xin = t => lerp(6, 14, t), xout = t => lerp(70, 50, t), xm = t => lerp(xin(t), xout(t), 0.5);
-      const a = c === 0 ? xin : xm, b = c === 0 ? xm : xout;
-      quads.push([[s * a(t0), y0], [s * b(t0), y0], [s * b(t1), y1], [s * a(t1), y1]]);
-      reg.push('limb');
-    }
-    const HEAD = [0, -240], hex = hexPts(0, -240, 40);
-    const tris = [];
-    for (let i = 0; i < 6; i++) tris.push([HEAD, hex[i], hex[(i + 1) % 6]]);
-    tris.push([[-14, -200], [14, -200], [14, -180]], [[-14, -200], [14, -180], [-14, -180]]);
-    for (const s of [-1, 1]) {
-      tris.push([[s * 50, -180], [s * 98, -176], [s * 82, -196]], [[s * 50, -180], [s * 82, -196], [s * 26, -190]]);
-      tris.push([[s * 112, 58], [s * 144, 58], [s * 132, 92]], [[s * 112, 58], [s * 132, 92], [s * 114, 84]]);
-      tris.push([[s * 14, 284], [s * 50, 284], [s * 60, 300]], [[s * 14, 284], [s * 60, 300], [s * 8, 300]]);
-    }
+    const shoulder = [[[16, -203], [84, -191], [14, -191]], [[90, -185], [114, -185], [98, -198]]];
+    const arm = strip([[102, -184, 24], [111, -90, 20], [121, 10, 15], [127, 62, 5]]);
+    const leg = strip([[36, 79, 62], [35, 132, 52], [33, 185, 42], [31, 235, 34], [30, 284, 26]]);
+    const foot = [[17, 288], [44, 288], [56, 304], [15, 304]];
+    for (const part of [shoulder, arm, leg, [foot]]) add([...part, ...part.map(mirror)], 'grey');
+
     const dx = -110;
-    const sh = pts => pts.map(([x, y]) => [x + dx, y]);
-    const polys = [
-      ...tris.map(t => P(sh(t), pal.grey, 0.95)),
-      ...quads.map((q, i) => P(sh(q), reg[i] === 'abd' ? pal.miss : reg[i] === 'limb' ? pal.grey : pal.hi, reg[i] === 'abd' ? 0.55 : 0.92)),
-    ];
+    const look = {
+      chest: [pal.hi, pal.c], pelvis: [pal.hi, pal.c],
+      abd: [pal.miss, pal.miss], grey: [pal.grey, pal.grey],
+    };
+    const alpha = { chest: [1, 0.85], pelvis: [1, 0.85], abd: [0.55, 0.4], grey: [0.95, 0.75] };
+    const polys = shards.map(({ t, kind }, i) => P(inset(t).map(([x, y]) => [x + dx, y]), look[kind][i % 2], alpha[kind][i % 2]));
     return {
       polys,
       deco: g => {
-        el('rect', { x: dx - 80, y: -66, width: 160, height: 82, rx: 10, fill: 'none', stroke: pal.miss, 'stroke-width': 3, 'stroke-dasharray': '8 6', class: 'pulse' }, g);
-        [[-126, 'mesh.chest', pal.hi], [-24, 'mesh.abdomen', pal.miss], [46, 'mesh.pelvis', pal.hi]].forEach(([y, k, f]) => {
-          el('line', { x1: dx + 80, y1: y - 6, x2: dx + 150, y2: y - 6, stroke: pal.line, 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, g);
+        el('rect', { x: dx - 80, y: -106, width: 160, height: 100, rx: 12, fill: 'none', stroke: pal.dec, 'stroke-width': 3, 'stroke-dasharray': '8 6', class: 'pulse' }, g);
+        [[-140, 'mesh.chest', pal.hi], [-50, 'mesh.abdomen', pal.miss], [42, 'mesh.pelvis', pal.hi]].forEach(([y, k, f]) => {
+          el('line', { x1: dx + 86, y1: y - 6, x2: dx + 150, y2: y - 6, stroke: pal.line, 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, g);
           T(g, dx + 160, y, tr(k), { fill: f, 'font-size': 19 });
         });
       },
