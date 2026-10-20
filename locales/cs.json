@@ -60,7 +60,7 @@
     "ai_that_cites_its": "AI, která cituje zdroj",
     "for_every_scan_a": "Ke každému snímku důvod, větu ze zprávy a ověřenou citaci Modré knihy ČOS. Když si AI není jistá, rozhoduje člověk.",
     "patients_often_forget_the": "Pacienti často zapomínají. Pojišťovna ale nikdy nezapomene, co komu zaplatila.",
-    "vzp_data_target_2028": "<b>Data VZP:</b> cílově od 1. 1. 2028 (konzultováno se zástupcem VZP). V prototypu simulovaná.",
+    "insurer_data_note": "<b>Data pojišťoven:</b> KOMPACS funguje i bez nich. Napojení na pojišťovny přidá vyšetření, o kterých žádná nemocnice neví. V prototypu simulovaná.",
     "alt_verdict": "Hodnocení AI s citací Modré knihy"
   },
   "compass": {
@@ -167,8 +167,8 @@
     "real_orders_clinical_sign": "Skutečné objednávky, klinické potvrzení AI.",
     "na_homolce_hospital": "Nemocnice Na Homolce",
     "second_site_connection_to": "Druhé pracoviště, napojení na ePACS.",
-    "vzp_data": "Data VZP",
-    "target_2028_01_01": "Cílově od 1. 1. 2028."
+    "insurer_data": "Data pojišťoven",
+    "insurer_data_sub": "Další zdroj vyšetření. KOMPACS funguje i bez něj."
   },
   "team": {
     "team_404_tumor_not": "Tým 404 Tumor Not Found",
@@ -234,8 +234,8 @@
       "roadmap_motol_sub": "skutečné objednávky",
       "roadmap_homolka": "Nemocnice Na Homolce",
       "roadmap_homolka_sub": "napojení na ePACS",
-      "roadmap_vzp": "Data VZP",
-      "roadmap_vzp_sub": "cílově 1. 1. 2028",
+      "roadmap_insurer": "Data pojišťoven",
+      "roadmap_insurer_sub": "další zdroj vyšetření",
       "roadmap_ehds": "EHDS",
       "roadmap_ehds_sub": "sdílení snímků 2031"
     }

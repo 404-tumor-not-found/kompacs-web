@@ -34,11 +34,11 @@ const cardData = [
   { m: 'CT', d: '2/2026', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
   { m: 'MR', d: '3/2026', src: 'Bulovka', lane: 'rep', rel: true, miss: true, region: 'pelvis' },
   { m: 'RTG', d: '5/2026', src: 'FN Motol', lane: 'nis', rel: true, region: 'chest' },
-  { m: 'CT', d: '8/2026', src: 'VZP', lane: 'ins', rel: true, miss: true, region: 'pelvis' },
+  { m: 'CT', d: '8/2026', src: tr('story.lane_insurer'), lane: 'ins', rel: true, miss: true, region: 'pelvis' },
   { m: 'USG', d: '2019', src: tr('story.report'), lane: 'rep' },
   { m: 'RTG', d: '2017', src: 'NIS', lane: 'nis' },
   { m: 'CT', d: '2014', src: 'NIS', lane: 'nis' },
-  { m: 'USG', d: '2016', src: 'VZP', lane: 'ins' },
+  { m: 'USG', d: '2016', src: tr('story.lane_insurer'), lane: 'ins' },
 ];
 const scatter = [[-300, -300, -9], [-40, -340, 6], [260, -290, -6], [330, 40, 8], [-330, 60, 7], [120, 320, -5], [-160, 300, 4], [-250, -120, 11], [190, -150, -10], [300, 230, 6], [-330, 230, -8], [40, 150, 9]];
 
