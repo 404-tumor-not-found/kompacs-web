@@ -140,7 +140,14 @@
     "interactive_timeline": "Interactive timeline",
     "scans_reports_treatment_labs": "Scans, reports, treatment, labs. Semantic search.",
     "2d_anatomical_map": "2D anatomical map",
-    "lights_up_only_areas": "Lights up only areas with proven imaging. Missing ones in red."
+    "lights_up_only_areas": "For each body region the physician sees prior exams, their dates and whether they are in PACS.",
+    "chest": "Chest",
+    "abdomen": "Abdomen",
+    "pelvis": "Pelvis",
+    "available": "available",
+    "missing": "missing",
+    "planned_exam": "planned exam",
+    "mr": "MRI"
   },
   "impact": {
     "fewer_duplicates_shorter_waits": "Fewer duplicates. Shorter waits. Less radiation for cancer patients.",
@@ -219,9 +226,9 @@
       "treatment": "TREATMENT",
       "ct_missing": "CT · missing in PACS",
       "report_quote": "“CT at Thomayer Hospital 12/2025”",
-      "chest": "Chest · CT 2/2026 ✓",
-      "abdomen": "Abdomen · CT 12/2025 missing",
-      "pelvis": "Pelvis · MRI 7/2025 ✓",
+      "chest": "Chest ✓",
+      "abdomen": "Abdomen · missing",
+      "pelvis": "Pelvis ✓",
       "prague": "Prague · FN Motol, Homolka",
       "one_stack": "One stack per hospital",
       "on_prem": "on-prem or EU cloud · a Czech IT integrator",
