@@ -3,9 +3,9 @@
     "label": "EN",
     "og_locale": "en_US",
     "lang_label": "Language",
-    "title": "KOMPACS · Prior scans for comparison before CT, MRI, PET and tumor boards",
-    "description": "KOMPACS (KOMparátor PACS) finds the relevant prior exams before a CT, MRI, PET or tumor board, checks them in PACS and requests what is missing. Winner of Rakathon 2026.",
-    "og_title": "KOMPACS · No exam without a comparison.",
+    "title": "KomPACS · Prior scans for comparison before CT, MRI, PET and tumor boards",
+    "description": "KomPACS (KOMparátor PACS) finds the relevant prior exams before a CT, MRI, PET or tumor board, checks them in PACS and requests what is missing. Winner of Rakathon 2026.",
+    "og_title": "KomPACS · No exam without a comparison.",
     "og_description": "Before a CT, MRI, PET or tumor board, it finds the relevant prior exams, checks them in PACS and requests what is missing.",
     "award": "1st place, Rakathon 2026"
   },
@@ -20,7 +20,7 @@
   "hero": {
     "1st_place_rakathon_2026": "1st place · Rakathon 2026",
     "tagline": "Prior scans for comparison before CT, MRI, PET and tumor boards",
-    "lead": "KOMPACS finds them in the NIS, in report text and with the insurer, checks them in PACS and requests the missing ones.",
+    "lead": "KomPACS finds them in the NIS, in report text and with the insurer, checks them in PACS and requests the missing ones.",
     "available": "available",
     "missing": "missing",
     "to_decide": "to decide",
@@ -36,7 +36,7 @@
     "of_10": "of 10",
     "cases_in_the_demo": "cases in the demo data lack a scan the physician needs.",
     "radiologists_love_two_things": "Radiologists love two things in life: darkness and complete patient data. Sadly, today's healthcare mostly gives them only the darkness.",
-    "medical_student_kompacs": "medical student, KOMPACS"
+    "medical_student_kompacs": "medical student, KomPACS"
   },
   "solution": {
     "the_solution": "The solution",
@@ -191,7 +191,7 @@
     "prototype_not_a_medical": "Prototype, not a medical device."
   },
   "showcase": {
-    "alt_case": "KOMPACS case detail"
+    "alt_case": "KomPACS case detail"
   },
   "js": {
     "common": {
@@ -227,7 +227,7 @@
       "on_prem": "on-prem or EU cloud · a Czech IT integrator",
       "rollout_note": "illustration of a possible rollout",
       "hours_today": "Today · 10 h for 40 cases",
-      "hours_with": "With KOMPACS · 2 h",
+      "hours_with": "With KomPACS · 2 h",
       "hours_note": "estimate · 1 block = 1 hour · ~68 fewer calls",
       "scans_found": "34 missing scans found",
       "roadmap_motol": "Pilot at FN Motol",
