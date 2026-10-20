@@ -60,7 +60,7 @@
     "ai_that_cites_its": "AI that cites its source",
     "for_every_scan_a": "For every scan: a reason, the source sentence and a verified guideline citation. When the AI is unsure, a human decides.",
     "patients_often_forget_the": "Patients often forget. The insurer never forgets what it paid for.",
-    "vzp_data_target_2028": "<b>VZP data:</b> target 2028-01-01 (consulted with a VZP representative). Simulated in the prototype.",
+    "insurer_data_note": "<b>Insurer data:</b> KOMPACS works without it. A link to insurers adds exams that no hospital knows about. Simulated in the prototype.",
     "alt_verdict": "AI verdict with guideline citation"
   },
   "compass": {
@@ -167,8 +167,8 @@
     "real_orders_clinical_sign": "Real orders, clinical sign-off of the AI.",
     "na_homolce_hospital": "Na Homolce Hospital",
     "second_site_connection_to": "Second site, connection to ePACS.",
-    "vzp_data": "VZP data",
-    "target_2028_01_01": "Target 2028-01-01."
+    "insurer_data": "Insurer data",
+    "insurer_data_sub": "An extra source of exams. KOMPACS works without it."
   },
   "team": {
     "team_404_tumor_not": "Team 404 Tumor Not Found",
@@ -234,8 +234,8 @@
       "roadmap_motol_sub": "real orders",
       "roadmap_homolka": "Na Homolce Hospital",
       "roadmap_homolka_sub": "ePACS connection",
-      "roadmap_vzp": "VZP data",
-      "roadmap_vzp_sub": "target 2028-01-01",
+      "roadmap_insurer": "Insurer data",
+      "roadmap_insurer_sub": "extra source of exams",
       "roadmap_ehds": "EHDS",
       "roadmap_ehds_sub": "image exchange 2031"
     }

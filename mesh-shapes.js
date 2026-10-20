@@ -140,7 +140,7 @@ const MS = (() => {
     };
   }
 
-  // Roadmap: Motol pilot -> Homolka -> VZP data 2028 -> EHDS 2031 (not ours).
+  // Roadmap: Motol pilot -> Homolka -> insurer data -> EHDS 2031 (not ours).
   function roadmap(pal) {
     const M = [[-300, 170], [-95, 60], [110, -50], [315, -160]];
     const polys = [];
@@ -156,7 +156,7 @@ const MS = (() => {
     return {
       polys,
       deco: g => {
-        [['mesh.roadmap_motol', 'mesh.roadmap_motol_sub'], ['mesh.roadmap_homolka', 'mesh.roadmap_homolka_sub'], ['mesh.roadmap_vzp', 'mesh.roadmap_vzp_sub'], ['mesh.roadmap_ehds', 'mesh.roadmap_ehds_sub']].forEach(([k, sub], i) => {
+        [['mesh.roadmap_motol', 'mesh.roadmap_motol_sub'], ['mesh.roadmap_homolka', 'mesh.roadmap_homolka_sub'], ['mesh.roadmap_insurer', 'mesh.roadmap_insurer_sub'], ['mesh.roadmap_ehds', 'mesh.roadmap_ehds_sub']].forEach(([k, sub], i) => {
           const [x, y] = M[i];
           T(g, x, y + 62, tr(k), { 'text-anchor': 'middle', fill: i === 3 ? pal.sub : pal.ink, 'font-size': 19 });
           T(g, x, y + 86, tr(sub), { 'text-anchor': 'middle', fill: pal.sub, 'font-size': 15, 'font-weight': 700 });
