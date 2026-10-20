@@ -3,9 +3,9 @@
     "label": "CZ",
     "og_locale": "cs_CZ",
     "lang_label": "Jazyk",
-    "title": "KOMPACS · Předchozí snímky pro srovnání před CT, MR, PET a MDT",
-    "description": "KOMPACS (KOMparátor PACS) najde před CT, MR, PET nebo MDT relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí. Vítěz Rakathonu 2026.",
-    "og_title": "KOMPACS · Žádné vyšetření bez srovnání.",
+    "title": "KomPACS · Předchozí snímky pro srovnání před CT, MR, PET a MDT",
+    "description": "KomPACS (KOMparátor PACS) najde před CT, MR, PET nebo MDT relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí. Vítěz Rakathonu 2026.",
+    "og_title": "KomPACS · Žádné vyšetření bez srovnání.",
     "og_description": "Před CT, MR, PET nebo MDT najde relevantní předchozí vyšetření, ověří je v PACS a vyžádá to, co chybí.",
     "award": "1. místo, Rakathon 2026"
   },
@@ -20,7 +20,7 @@
   "hero": {
     "1st_place_rakathon_2026": "1. místo · Rakathon 2026",
     "tagline": "Předchozí snímky pro srovnání před CT, MR, PET a MDT",
-    "lead": "KOMPACS je dohledá v NIS, v textu zpráv i u pojišťovny, ověří je v PACS a vyžádá ty, které chybí.",
+    "lead": "KomPACS je dohledá v NIS, v textu zpráv i u pojišťovny, ověří je v PACS a vyžádá ty, které chybí.",
     "available": "dostupné",
     "missing": "chybí",
     "to_decide": "k rozhodnutí",
@@ -36,7 +36,7 @@
     "of_10": "z 10",
     "cases_in_the_demo": "případů v demo datech nemá snímek, který lékař potřebuje.",
     "radiologists_love_two_things": "Radiologové milují v životě dvě věci: tmu a kompletní data pacientů. Bohužel, dnešní zdravotnictví jim většinou dopřeje jen tu tmu.",
-    "medical_student_kompacs": "medik, KOMPACS"
+    "medical_student_kompacs": "medik, KomPACS"
   },
   "solution": {
     "the_solution": "Řešení",
@@ -191,7 +191,7 @@
     "prototype_not_a_medical": "Prototyp, není zdravotnický prostředek."
   },
   "showcase": {
-    "alt_case": "KOMPACS: detail případu s úkoly koordinátora"
+    "alt_case": "KomPACS: detail případu s úkoly koordinátora"
   },
   "js": {
     "common": {
@@ -227,7 +227,7 @@
       "on_prem": "on-prem nebo EU cloud · český IT integrátor",
       "rollout_note": "ilustrace možného rozšíření",
       "hours_today": "Dnes · 10 h na 40 případů",
-      "hours_with": "S KOMPACS · 2 h",
+      "hours_with": "S KomPACS · 2 h",
       "hours_note": "odhad · 1 dílek = 1 hodina · ~68 telefonátů méně",
       "scans_found": "34 chybějících snímků nalezeno",
       "roadmap_motol": "Pilot FN Motol",

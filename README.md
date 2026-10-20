@@ -1,6 +1,6 @@
 # kompacs-web
 
-Landing page for [KOMPACS](https://kompacs.cz) (KOMparátor PACS), team 404 Tumor Not Found, Rakathon 2026. App repo: private.
+Landing page for [KomPACS](https://kompacs.cz) (KOMparátor PACS), team 404 Tumor Not Found, Rakathon 2026. App repo: private.
 
 Static HTML, CSS and JS. GSAP from cdnjs. A small Python build (stdlib only) renders one page per language.
 
